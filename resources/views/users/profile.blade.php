@@ -1,18 +1,8 @@
 @extends('adminlte::page')
 
-@section('title')
-    Profile
-@endsection
+@section('title', 'Profile')
 
 @section('content')
-    {{-- <div class="container">
-        <ul class="fa-ul">
-            @foreach ($user->getFillable() as $key => $value)
-                <li><span class="fa-li"></span>{{ $key.' =>'.$value.' => '.$user->getAttributeValue($value) }}</li>
-            @endforeach
-        </ul>
-    </div> --}}
-
     <div class="container">
         <p><h1 class="title" style="margin-left:1%;">Profile</h1></p>
 
@@ -20,7 +10,7 @@
             @method('PATCH')
             @csrf
                 
-            @foreach ($user->getFillable() as $fillableAttribute)
+            @foreach ($user->getFillableAttributes() as $fillableAttribute)
                 <?php $aux = ucwords(str_replace("_", " ", $fillableAttribute)); ?>
                 <div class="form-group">
                     <label for={{ $fillableAttribute }} class="col-sm-2 control-label" style="max-width:none"><h5>{{ $aux }}</h5></label>
@@ -74,6 +64,8 @@
 @endsection
 
 @section('adminlte_js')
+    <script src="{{ asset('vendor/adminlte/dist/js/adminlte.min.js') }}"></script>
+    @stack('js')
     @yield('js')
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <link rel="stylesheet" href="/resources/demos/style.css">

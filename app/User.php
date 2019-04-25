@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'birth_date', 'email',
+        'name', 'birth_date', 'email', 'password',
     ];
 
     /**
@@ -27,4 +27,22 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function getFillableAttributes()
+    {
+        $fillable = $this->getFillable();
+
+        foreach ($fillable as $key => $value) {
+            if(strcmp($value, 'password') == 0) {
+                unset($fillable[$key]);
+            }
+        }
+
+        return $fillable;
+    }
 }

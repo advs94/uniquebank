@@ -1,8 +1,6 @@
 @extends('adminlte::page')
 
-@section('title')
-    Change Password
-@endsection
+@section('title', 'Password')
 
 @section('content')
 

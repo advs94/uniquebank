@@ -1,8 +1,6 @@
 @extends('adminlte::page')
 
-@section('title')
-    Users
-@endsection
+@section('title', 'Users')
 
 @section('content')
     <div class="container">

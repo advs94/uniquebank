@@ -23,9 +23,8 @@ Route::get('/', function () {
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('banks', 'BanksController');
-Route::get('/users', 'UsersController@index');
-Route::patch('users/{user}', 'UsersController@update');
-Route::delete('users/{user}', 'UsersController@destroy');
-Route::get('/users/profile', 'UsersController@profile');
+Route::get('/users/profile', 'UsersController@edit')->name('profile');
+Route::patch('/users/{user}', 'UsersController@update');
+Route::delete('/users/{user}', 'UsersController@destroy');
 Route::get('/users/password', 'UsersController@editPassword');
-Route::patch('/users/{user}/password', 'UsersController@updatePassword');
+Route::patch('/users/password/{user}', 'UsersController@updatePassword');

@@ -48,29 +48,31 @@ class UsersController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \UniqueBank\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function show(User $user)
+    public function show()
     {
-        //
+        $user = \Auth::user();
+
+        return view('profile', compact('user'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \UniqueBank\User  $user
+     * 
      * @return \Illuminate\Http\Response
      */
-    public function edit(User $user)
+    public function edit()
     {
-        //
+        $user = \Auth::user();
+
+        return view('users.profile', compact('user'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @param  \UniqueBank\User  $user
      * @return \Illuminate\Http\Response
      */
@@ -115,18 +117,6 @@ class UsersController extends Controller
         $user->delete();
 
         return redirect('/users/profile');
-    }
-
-    /**
-     * Display the profile of the user.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function profile()
-    {
-        $user = \Auth::user();
-
-        return view('users.profile', compact('user'));
     }
 
     /**
