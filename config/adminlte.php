@@ -71,7 +71,7 @@ return [
     |
     */
 
-    'collapse_sidebar' => true,
+    'collapse_sidebar' => false,
 
     /*
     |--------------------------------------------------------------------------
@@ -115,6 +115,21 @@ return [
             'can'  => 'manage-blog',
         ],
         [
+            'text'    => 'Accounts',
+            'icon'    => 'credit-card',
+            'submenu' => [
+                [
+                    'text' => 'Show Accounts',
+                    'url' => 'accounts',
+                    
+                ],
+                [
+                    'text' => 'Create Account',
+                    'url' => 'accounts/create',
+                ],
+            ],
+        ],
+        [
             'text'    => 'Transfers',
             'icon'    => 'bank',
             'submenu' => [
@@ -130,7 +145,7 @@ return [
         ],
         [
             'text'    => 'Consultations',
-            'icon'    => 'credit-card',
+            'icon'    => 'file-text-o',
             'submenu' => [
                 [
                     'text' => 'Balance',
@@ -161,44 +176,44 @@ return [
             'url'  => 'users/password',
             'icon' => 'lock',
         ],
-        [
-            'text'    => 'Multilevel',
-            'icon'    => 'share',
-            'submenu' => [
-                [
-                    'text' => 'Level One',
-                    'url'  => '#',
-                ],
-                [
-                    'text'    => 'Level One',
-                    'url'     => '#',
-                    'submenu' => [
-                        [
-                            'text' => 'Level Two',
-                            'url'  => '#',
-                        ],
-                        [
-                            'text'    => 'Level Two',
-                            'url'     => '#',
-                            'submenu' => [
-                                [
-                                    'text' => 'Level Three',
-                                    'url'  => '#',
-                                ],
-                                [
-                                    'text' => 'Level Three',
-                                    'url'  => '#',
-                                ],
-                            ],
-                        ],
-                    ],
-                ],
-                [
-                    'text' => 'Level One',
-                    'url'  => '#',
-                ],
-            ],
-        ],
+        // [
+        //     'text'    => 'Multilevel',
+        //     'icon'    => 'share',
+        //     'submenu' => [
+        //         [
+        //             'text' => 'Level One',
+        //             'url'  => '#',
+        //         ],
+        //         [
+        //             'text'    => 'Level One',
+        //             'url'     => '#',
+        //             'submenu' => [
+        //                 [
+        //                     'text' => 'Level Two',
+        //                     'url'  => '#',
+        //                 ],
+        //                 [
+        //                     'text'    => 'Level Two',
+        //                     'url'     => '#',
+        //                     'submenu' => [
+        //                         [
+        //                             'text' => 'Level Three',
+        //                             'url'  => '#',
+        //                         ],
+        //                         [
+        //                             'text' => 'Level Three',
+        //                             'url'  => '#',
+        //                         ],
+        //                     ],
+        //                 ],
+        //             ],
+        //         ],
+        //         [
+        //             'text' => 'Level One',
+        //             'url'  => '#',
+        //         ],
+        //     ],
+        // ],
         // 'LABELS',
         // [
         //     'text'       => 'Important',
