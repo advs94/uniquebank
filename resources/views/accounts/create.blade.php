@@ -1,47 +1,31 @@
 @extends('adminlte::page')
 
-@section('title', 'Profile')
+@section('title', 'Account')
 
 @section('content')
     <div class="container">
-        <p><h1 class="title" style="margin-left:1%;">Profile</h1></p>
+        <p><h1 class="title" style="margin-left:1%;">Create Account</h1></p>
 
-        <form class="form-horizontal" method="post" action="/users/{{ $user->id }}">
-            @method('PATCH')
+        <form class="form-horizontal" method="post" action="/accounts/{{ $user->id }}">
             @csrf
                 
-            @foreach ($user->getFillableAttributes() as $fillableAttribute)
-                <?php $aux = ucwords(str_replace("_", " ", $fillableAttribute)); ?>
+            @foreach ($account->getHidden() as $hiddenAttribute)
+                {{ gettype($hiddenAttribute) }}
+                <?php $aux = ucwords(str_replace("_", " ", $hiddenAttribute)); ?>
                 <div class="form-group">
-                    <label for={{ $fillableAttribute }} class="col-sm-2 control-label" style="max-width:none"><h5>{{ $aux }}</h5></label>
-                    @if (strtotime($user->$fillableAttribute))
-                        <?php
-                            $aux = explode('-', $user->$fillableAttribute);
-                            $temp = $aux[0];
-                            $aux[0] = $aux[2];
-                            $aux[2] = $temp;
-                            $aux = implode('/', $aux);
-                        ?>
-                        <div class="col-sm-10 has-feedback {{ $errors->has($fillableAttribute) ? 'has-error' : '' }}">
-                            <input type="text" id="{{ $fillableAttribute }}" name="{{ $fillableAttribute }}" class="form-control" value="{{ $aux }}"></textarea>
-                            <span class="glyphicon glyphicon-lock form-control-feedback"></span>
-                            @if ($errors->has($fillableAttribute))
-                                <span class="help-block">
-                                    <strong>{{ $errors->first($fillableAttribute) }}</strong>
-                                </span>
-                            @endif
-                        </div>
-                    @else
-                        <div class="col-sm-10 has-feedback {{ $errors->has($fillableAttribute) ? 'has-error' : '' }}">
-                            <input type="text" id="{{ $fillableAttribute }}" name="{{ $fillableAttribute }}" class="form-control" value="{{ $user->$fillableAttribute }}"></textarea>
-                            <span class="glyphicon glyphicon-lock form-control-feedback"></span>
-                            @if ($errors->has($fillableAttribute))
-                                <span class="help-block">
-                                    <strong>{{ $errors->first($fillableAttribute) }}</strong>
-                                </span>
-                            @endif
-                        </div>
-                    @endif
+                    <label for={{ $hiddenAttribute }} class="col-sm-2 control-label" style="max-width:none"><h5>{{ $aux }}</h5></label>
+                    <div class="col-sm-10 has-feedback {{ $errors->has($hiddenAttribute) ? 'has-error' : '' }}">
+                        @if (strcmp(gettype($hiddenAttribute), 'string') == 0)
+                            @continue
+                        @endif
+                        <input type="text" id={{ $hiddenAttribute }} name={{ $hiddenAttribute }} class="form-control" value={{ $user->$hiddenAttribute }}></textarea>
+                        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                        @if ($errors->has($hiddenAttribute))
+                            <span class="help-block">
+                                <strong>{{ $errors->first($hiddenAttribute) }}</strong>
+                            </span>
+                        @endif
+                    </div>
                 </div>
             @endforeach
             <div class="form-group">

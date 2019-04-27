@@ -4,6 +4,7 @@ namespace UniqueBank\Http\Controllers;
 
 use UniqueBank\Account;
 use Illuminate\Http\Request;
+use Auth;
 
 class AccountsController extends Controller
 {
@@ -24,7 +25,10 @@ class AccountsController extends Controller
      */
     public function create()
     {
-        //
+        $user = Auth::user();
+        $account = new Account;
+
+        return view('accounts.create', compact(['user', 'account']));
     }
 
     /**

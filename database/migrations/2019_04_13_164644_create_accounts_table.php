@@ -21,8 +21,6 @@ class CreateAccountsTable extends Migration
             $table->string('iban')->unique()->nullable(false);
             $table->unsignedInteger('user_id')->nullable(false);
             $table->foreign('user_id')->references('id')->on('users');
-            // $table->unsignedInteger('bank_id')->nullable('false');
-            // $table->foreign('bank_id')->references('id')->on('banks');
             $table->enum('type', ['checking', 'savings'])->nullable(false);
             $table->timestamps();
         });
