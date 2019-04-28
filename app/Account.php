@@ -14,4 +14,17 @@ class Account extends Model
     protected $hidden = [
         'balance', 'pin', 'nib', 'iban', 'user_id', 'type', 
     ];
+
+    /**
+     * The attributes that should be cast to native types.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'balance' => 'integer',
+        'pin' => 'integer',
+        'nib' => 'decimal:21',
+        'iban' => 'string',
+        'user_id' => 'integer',
+    ];
 }

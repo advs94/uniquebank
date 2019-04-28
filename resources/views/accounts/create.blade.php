@@ -8,26 +8,41 @@
 
         <form class="form-horizontal" method="post" action="/accounts/{{ $user->id }}">
             @csrf
-                
-            @foreach ($account->getHidden() as $hiddenAttribute)
-                {{ gettype($hiddenAttribute) }}
-                <?php $aux = ucwords(str_replace("_", " ", $hiddenAttribute)); ?>
-                <div class="form-group">
-                    <label for={{ $hiddenAttribute }} class="col-sm-2 control-label" style="max-width:none"><h5>{{ $aux }}</h5></label>
-                    <div class="col-sm-10 has-feedback {{ $errors->has($hiddenAttribute) ? 'has-error' : '' }}">
-                        @if (strcmp(gettype($hiddenAttribute), 'string') == 0)
-                            @continue
-                        @endif
-                        <input type="text" id={{ $hiddenAttribute }} name={{ $hiddenAttribute }} class="form-control" value={{ $user->$hiddenAttribute }}></textarea>
-                        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
-                        @if ($errors->has($hiddenAttribute))
-                            <span class="help-block">
-                                <strong>{{ $errors->first($hiddenAttribute) }}</strong>
-                            </span>
-                        @endif
-                    </div>
+
+            <div class="form-group">
+                <label for="type" class="col-sm-2 control-label" style="max-width:none"><h5>Account Type</h5></label>
+                <div class="col-sm-10 has-feedback {{ $errors->has('type') ? 'has-error' : '' }}">
+                    <select name="type" id="type" class="form-control">
+                        @foreach (config('enums.account_types') as $accountType)
+                            <option value={{ $accountType }}>{{ ucwords($accountType) }}</option>
+                        @endforeach
+                    </select>
                 </div>
-            @endforeach
+            </div>
+            <div class="form-group">
+                <label for="pin" class="col-sm-2 control-label" style="max-width:none"><h5>PIN</h5></label>
+                <div class="col-sm-10 has-feedback {{ $errors->has('pin') ? 'has-error' : '' }}">
+                    <input type="password" id="pin" name="pin" class="form-control">
+                    <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                    @if ($errors->has('pin'))
+                        <span class="help-block">
+                            <strong>{{ $errors->first('pin') }}</strong>
+                        </span>
+                    @endif
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="pin_confirmation" class="col-sm-2 control-label" style="max-width:none"><h5>Confirm PIN</h5></label>
+                <div class="col-sm-10 has-feedback {{ $errors->has('pin_confirmation') ? 'has-error' : '' }}">
+                    <input type="password" id="pin_confirmation" name="pin_confirmation" class="form-control">
+                    <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                    @if ($errors->has('pin_confirmation'))
+                        <span class="help-block">
+                            <strong>{{ $errors->first('pin_confirmation') }}</strong>
+                        </span>
+                    @endif
+                </div>
+            </div>
             <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
                     <button type="submit" class="btn btn-default" style="background-color: rgb(0, 100, 255);">Submit</button>
