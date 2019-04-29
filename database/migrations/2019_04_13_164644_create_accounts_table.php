@@ -17,7 +17,7 @@ class CreateAccountsTable extends Migration
             $table->increments('id');
             $table->integer('balance')->nullable(false);
             $table->smallInteger('pin')->nullable(false);
-            $table->decimal('nib', 21, 0)->unique()->nullable(false);
+            $table->string('nib')->unique()->nullable(false);
             $table->string('iban')->unique()->nullable(false);
             $table->unsignedInteger('user_id')->nullable(false);
             $table->foreign('user_id')->references('id')->on('users');

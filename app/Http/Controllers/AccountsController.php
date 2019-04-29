@@ -17,7 +17,9 @@ class AccountsController extends Controller
      */
     public function index()
     {
-        //
+        $user = Auth::user();        
+
+        return view('accounts.show', compact('user'));
     }
 
     /**
@@ -59,11 +61,13 @@ class AccountsController extends Controller
         $account = new Account();
         $account->balance = 0;
         $account->pin = $data['pin'];
-        $account->nib = 
-        $account->iban = rand((int) 111111111111111111111, (int) 999999999999999999999);
+        $account->nib = rand(0, 9);        
 
-        return $account->iban;
+        for ($i = 1; $i < 21; $i++) {
+            $account->nib = rand(0, 9).$account->nib;
+        }
 
+        $account->iban = 'PT50'.$account->nib;
         $account->user_id = $user->id;
         $account->type = $data['type'];
 
@@ -114,6 +118,8 @@ class AccountsController extends Controller
      */
     public function destroy(Account $account)
     {
-        //
+        $account->delete();
+
+        return back()->with("success","Account deleted successfully !");;
     }
 }

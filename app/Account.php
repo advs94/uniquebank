@@ -23,7 +23,7 @@ class Account extends Model
     protected $casts = [
         'balance' => 'integer',
         'pin' => 'integer',
-        'nib' => 'decimal:21',
+        'nib' => 'string',
         'iban' => 'string',
         'user_id' => 'integer',
     ];
