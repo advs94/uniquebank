@@ -27,4 +27,12 @@ class Account extends Model
         'iban' => 'string',
         'user_id' => 'integer',
     ];
+
+    /**
+     * Get the user that owns the accounts.
+     */
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

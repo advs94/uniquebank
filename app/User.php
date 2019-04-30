@@ -29,6 +29,16 @@ class User extends Authenticatable
     ];
 
     /**
+     * Get all of the user's accounts.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function accounts()
+    {
+        return $this->hasMany(Account::class);
+    }
+    
+    /**
      * Show the application dashboard.
      *
      * @return \Illuminate\Contracts\Support\Renderable

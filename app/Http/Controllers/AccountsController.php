@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Auth;
 use UniqueBank\User;
 use Validator;
+use DB;
 
 class AccountsController extends Controller
 {
@@ -17,7 +18,7 @@ class AccountsController extends Controller
      */
     public function index()
     {
-        $user = Auth::user();        
+        $user = Auth::user();   
 
         return view('accounts.show', compact('user'));
     }
