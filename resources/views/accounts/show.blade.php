@@ -25,8 +25,7 @@
                 </div>
                 <div class="form-group row" style="margin-left:4.5%;">
                     <div class="col-md-2">
-                        {{-- font-size here --}}
-                        <button type="submit" class="btn btn-default" style="background-color: rgb(0, 100, 255); margin-left:6px; padding: 7px 15px;">Delete</button>
+                        <button type="submit" class="btn btn-default" style="background-color: rgb(0, 100, 255); margin-left:6px; padding: 7px 15px; font-size:130%">Delete</button>
                     </div>
                 </div>
             </form>

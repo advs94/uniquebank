@@ -24,6 +24,6 @@ Route::get('/users/password', 'UsersController@editPassword');
 Route::patch('/users/password/{user}', 'UsersController@updatePassword');
 Route::get('/accounts', 'AccountsController@index');
 Route::patch('/accounts/{user}', 'AccountsController@update');
-Route::delete('/accounts/{user}', 'AccountsController@destroy');
+Route::delete('/accounts/{account}', 'AccountsController@destroy');
 Route::get('/accounts/create', 'AccountsController@create');
 Route::post('/accounts/{user}', 'AccountsController@store');
