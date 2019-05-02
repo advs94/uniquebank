@@ -29,6 +29,18 @@ class User extends Authenticatable
     ];
 
     /**
+     * The attributes that should be cast to native types.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'id' => 'integer',
+        'name' => 'string',
+        'email' => 'string',
+        'password' => 'string',
+    ];
+
+    /**
      * Get all of the user's accounts.
      *
      * @return \Illuminate\Contracts\Support\Renderable

@@ -15,10 +15,12 @@ class CreateTransfersTable extends Migration
     {
         Schema::create('transfers', function (Blueprint $table) {
             $table->increments('id');
-            $table->increments('sender_');
-            $table->foreign('sender_id')->references('id')->on('users');
-            $table->increments('receiver_id');
-            $table->foreign('receiver_id')->references('id')->on('users');
+            $table->increments('sender_account_id')->nullable(false);
+            $table->foreign('sender_account_id')->references('id')->on('users');
+            $table->increments('receiver_account_id')->nullable(false);
+            $table->foreign('receiver_account_id')->references('id')->on('users');
+            $table->integer('amount')->nullable(false);
+            $table->enum('type', ['national', 'international'])->nullable(false);
             $table->timestamps();
         });
     }

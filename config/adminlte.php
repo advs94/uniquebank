@@ -135,11 +135,11 @@ return [
             'submenu' => [
                 [
                     'text' => 'National Transfers',
-                    'url' => 'projects',
+                    'url' => 'transfers/national',
                 ],
                 [
                     'text' => 'International Transfers',
-                    'url' => 'projects/create',
+                    'url' => 'transfers/international',
                 ],
             ],
         ],

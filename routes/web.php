@@ -29,4 +29,7 @@ Route::get('/accounts/create', 'AccountsController@create');
 Route::post('/accounts/{user}', 'AccountsController@store');
 Route::get('/accounts/balance', 'AccountsController@balance');
 Route::get('/accounts/nibiban', 'AccountsController@nibiban');
-// Route::get('/transfers/nationals', 'AccountsController@nibiban');
+Route::get('/transfers/national', 'TransfersController@nationals');
+Route::post('/transfers/national/{user}', 'TransfersController@storeNationals');
+Route::get('/transfers/international', 'TransfersController@internationals');
+Route::post('/transfers/international/{user}', 'TransfersController@storeInternationals');

@@ -11,7 +11,7 @@ class Account extends Model
      *
      * @var array
      */
-    protected $hidden = [
+    protected $fillable = [
         'balance', 'pin', 'nib', 'iban', 'user_id', 'type', 
     ];
 
@@ -21,6 +21,7 @@ class Account extends Model
      * @var array
      */
     protected $casts = [
+        'id' => 'integer',
         'balance' => 'integer',
         'pin' => 'integer',
         'nib' => 'string',
@@ -34,5 +35,13 @@ class Account extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    /**
+     * Get the transfers performed by the accounts.
+     */
+    public function transfers()
+    {
+        return $this->belongsToMany(Transfer::class);
     }
 }
