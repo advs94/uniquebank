@@ -121,6 +121,30 @@ class AccountsController extends Controller
     {
         $account->delete();
 
-        return back()->with("success","Account deleted successfully !");;
+        return back()->with("success","Account deleted successfully !");
+    }
+
+    /**
+     * Show the balance of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function balance()
+    {
+        $user = Auth::user();
+
+        return view('accounts.balance', compact('user'));;
+    }
+
+    /**
+     * Show the balance of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function nibiban()
+    {
+        $user = Auth::user();
+
+        return view('accounts.nibiban', compact('user'));;
     }
 }

@@ -96,14 +96,14 @@ class UsersController extends Controller
                 $aux[0] = $aux[2];
                 $aux[2] = $temp;
                 $user->$fillableAttribute = implode('-', $aux);
-            } else {
+            } else if(strcmp($fillableAttribute, 'password') != 0) {
                 $user->$fillableAttribute = request($fillableAttribute);           
             }
         }
 
         $user->save();
 
-        return redirect('/users/profile');
+        return redirect()->back()->with("success","Profile changed successfully !");
     }
 
     /**

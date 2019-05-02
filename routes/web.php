@@ -27,3 +27,6 @@ Route::patch('/accounts/{user}', 'AccountsController@update');
 Route::delete('/accounts/{account}', 'AccountsController@destroy');
 Route::get('/accounts/create', 'AccountsController@create');
 Route::post('/accounts/{user}', 'AccountsController@store');
+Route::get('/accounts/balance', 'AccountsController@balance');
+Route::get('/accounts/nibiban', 'AccountsController@nibiban');
+// Route::get('/transfers/nationals', 'AccountsController@nibiban');

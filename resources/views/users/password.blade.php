@@ -18,7 +18,7 @@
             </div>
         @endif
 
-        <form class="form-horizontal" method="post" action="/users/{{ $user->id }}/password">
+        <form class="form-horizontal" method="post" action="/users/password/{{ $user->id }}">
             @method('PATCH')
             @csrf
                 

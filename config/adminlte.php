@@ -149,7 +149,7 @@ return [
             'submenu' => [
                 [
                     'text' => 'Balance',
-                    'url' => 'projects',
+                    'url' => 'accounts/balance',
                 ],
                 [
                     'text' => 'Account Movements',
@@ -161,7 +161,7 @@ return [
                 ],
                 [
                     'text' => 'NIB & IBAN',
-                    'url' => 'projects/create',
+                    'url' => 'accounts/nibiban',
                 ],
             ],
         ],
