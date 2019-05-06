@@ -15,9 +15,9 @@ class CreateTransfersTable extends Migration
     {
         Schema::create('transfers', function (Blueprint $table) {
             $table->increments('id');
-            $table->increments('sender_account_id')->nullable(false);
+            $table->unsignedInteger('sender_account_id')->nullable(false);
             $table->foreign('sender_account_id')->references('id')->on('users');
-            $table->increments('receiver_account_id')->nullable(false);
+            $table->unsignedInteger('receiver_account_id')->nullable(false);
             $table->foreign('receiver_account_id')->references('id')->on('users');
             $table->integer('amount')->nullable(false);
             $table->enum('type', ['national', 'international'])->nullable(false);

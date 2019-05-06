@@ -6,6 +6,8 @@ use UniqueBank\Transfer;
 use Illuminate\Http\Request;
 use Auth;
 use UniqueBank\User;
+use UniqueBank\Account;
+use Validator;
 
 class TransfersController extends Controller
 {
@@ -103,23 +105,38 @@ class TransfersController extends Controller
      * @param  \UniqueBank\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function storeNationals(User $sender)
+    public function storeNationals(User $user)
     {
         $data = request()->all();
 
-        return strlen($data['account']);       // teste de tamanho de string de nib com espaços para colocar nas restrições
-
         Validator::make($data, [
-            'nib' => ['required', 'integer', 'digits:21'],
-            'account' => ['required', 'string'],    // falta min e max para igualar a string de nib com espaços
+            'nib' => ['required', 'string', 'min:21', 'max:21'],
+            'account' => ['required', 'string', 'min:21', 'max:21'],
             'amount' => ['required', 'integer', 'min:1'],
         ])->validate();
 
-        $user->accounts();
+        $sender_account = $user->accounts()->whereNib($data['account'])->first();
+        $receiver_account = Account::whereNib($data['nib'])->first();
 
+        if(!isset($receiver_account->id)) {
+            return redirect()->back()->with("error","Account not associated with NIB inserted !");                    
+        } else if($data['amount'] > $sender_account->balance) {
+            return redirect()->back()->with("error","Unavailable amount !");        
+        } else if($receiver_account->id == $sender_account->id) {
+            return redirect()->back()->with("error","Sending and receiving accounts cannot be the same !");        
+        }
+
+        $transfer = new Transfer();
+        $transfer->sender_account_id = $sender_account->id;
+        $transfer->receiver_account_id = $receiver_account->id;
+        $transfer->amount = $data['amount'];
+        $transfer->type = 'national';
         $transfer->save();
 
-        return redirect()->back()->with("success","Transfer permorfed successfully !");        
+        $receiver_account->balance += $transfer->amount;
+        $receiver_account->save();
+
+        return redirect()->back()->with("success","Transfer of ".$transfer->amount."€ to ".$user->name." permorfed successfully !");        
     }
 
     /**

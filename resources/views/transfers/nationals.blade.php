@@ -6,7 +6,18 @@
     <div class="container">
         <p><h1 class="title" style="margin-left:1%;">National Transfers</h1></p>
 
-        <form class="form-horizontal" method="post" action="/transfers/{{ $user->id }}">
+        @if (session('error'))
+            <div class="alert alert-danger">
+                {{ session('error') }}
+            </div>
+        @endif
+        @if (session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
+
+        <form class="form-horizontal" method="post" action="/transfers/national/{{ $user->id }}">
             @csrf
 
             <div class="form-group">
@@ -38,7 +49,7 @@
                                     $string .= $account->nib[$i];
                                 ?>
                             @endfor
-                            <option value={{ $string }}>{{ ucwords($string) }}</option>
+                            <option value={{ $account->nib }}>{{ $string }}</option>
                         @endforeach
                     </select>
                 </div>
