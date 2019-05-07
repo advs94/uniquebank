@@ -136,6 +136,9 @@ class TransfersController extends Controller
         $receiver_account->balance += $transfer->amount;
         $receiver_account->save();
 
+        $sender_account->balance -= $transfer->amount;
+        $sender_account->save();
+
         return redirect()->back()->with("success","Transfer of ".$transfer->amount."€ to ".$user->name." permorfed successfully !");        
     }
 
