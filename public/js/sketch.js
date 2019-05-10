@@ -5,13 +5,8 @@ function modelReady() {
   console.log('Model is ready!!!');
 }
 
-function imageReady() {
-  image(puffin, 0, 0, width, height);
-  mobilenet.predict(puffin, gotResults);
-}
-
 function gotResults(error, results) {
-  if(error0) {
+  if(error) {
     console.error(error);
   } else {
     console.log(results);
@@ -25,11 +20,15 @@ function gotResults(error, results) {
   }
 }
 
+function imageReady() {
+  image(puffin, 0, 0, width, height);
+  mobilenet.predict(puffin, gotResults);
+}
+
 function setup() {
   createCanvas(640, 480);
   puffin = createImg('js/puffin.jpg', imageReady);
   puffin.hide();
   background(0);
-  image(puffin, 0, 0);
-  mobilenet = ml5.imageClassifier('MobileNet', modelready);
+  mobilenet = ml5.imageClassifier('MobileNet', modelReady);
 }
