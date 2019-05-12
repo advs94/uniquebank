@@ -33,3 +33,9 @@ Route::get('/transfers/national', 'TransfersController@nationals');
 Route::post('/transfers/national/{user}', 'TransfersController@storeNationals');
 Route::get('/transfers/international', 'TransfersController@internationals');
 Route::post('/transfers/international/{user}', 'TransfersController@storeInternationals');
+Route::get("/model.json", function() {
+    return response()->file('js\model.json');
+});
+Route::get("/model.weights.bin", function() {
+    return response()->file('js\model.weights.bin');
+});

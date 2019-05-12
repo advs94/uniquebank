@@ -1,34 +1,25 @@
 let mobilenet;
 let classifier;
 let video;
-let label = 0;
+let label = 'loading model';
+let happyButton;
+let sadButton;
+let saveButton;
 let trainButton;
-let addButton;
-
-function whileTraining(loss) {
-  if(loss == null) {
-    console.log('Training Complete');
-    predictor.predict(gotResults);
-  } else {
-    console.log(loss);
-  }
-}
-
-function gotResults(error, result) {
-  if(error) {
-    console.error(error);
-  } else {
-    value = result;
-    predictor.predict(gotResults);
-  }
-}
 
 function modelReady() {
   console.log('Model is ready!!!');
 }
 
+function customModelReady() {
+  console.log('Custom Model is ready!!!');
+  label = 'model ready';
+  classifier.classify(gotResults);
+}
+
 function videoReady() {
   console.log('Video is ready!!!');
+  classifier.load('model.json', customModelReady);
 }
 
 function setup() {
@@ -66,4 +57,22 @@ function draw() {
     fill(255);
     textSize(16);
     text(label, 10, height - 10);
+}
+
+function whileTraining(loss) {
+  if(loss == null) {
+    console.log('Training Complete');
+    classifier.classify(gotResults);
+  } else {
+    console.log(loss);
+  }
+}
+
+function gotResults(error, result) {
+  if(error) {
+    console.error(error);
+  } else {
+    label = result;
+    classifier.classify(gotResults);
+  }
 }

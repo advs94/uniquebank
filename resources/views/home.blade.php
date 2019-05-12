@@ -7,12 +7,17 @@
 @stop
 
 @section('content')
+  <?php 
+    if(!Auth::check()) {
+      view('vendor\adminlte\login');
+    }
+  ?>
   <p>You are logged in!</p>
 @stop
 
-@section('js')
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.3/p5.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.3/addons/p5.dom.min.js"></script>
-  <script src="https://unpkg.com/ml5@0.1.1/dist/ml5.min.js"></script>
+{{-- @section('js')
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.8.0/p5.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.8.0/addons/p5.dom.min.js"></script>
+  <script src="https://unpkg.com/ml5@0.1.3/dist/ml5.min.js"></script>
   <script type="text/javascript" src="{{ URL::asset('js/video.js') }}"></script>
-@endsection
+@endsection --}}
