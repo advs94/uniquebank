@@ -19,7 +19,7 @@ function customModelReady() {
 
 function videoReady() {
   console.log('Video is ready!!!');
-  classifier.load('model.json', customModelReady);
+  // classifier.load('model.json', customModelReady);
 }
 
 function setup() {
@@ -48,6 +48,11 @@ function setup() {
   saveButton = createButton('save');
   saveButton.mousePressed(function() {
     classifier.save();
+  });
+
+  loadButton = createButton('load');
+  loadButton.mousePressed(function() {
+    classifier.load('model.json', customModelReady);
   });
 }
 
