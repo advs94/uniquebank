@@ -13,6 +13,6 @@
 @section('js')
   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.8.0/p5.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.8.0/addons/p5.dom.min.js"></script>
-  <script src="https://unpkg.com/ml5@0.1.3/dist/ml5.min.js"></script>
-  <script type="text/javascript" src="{{ URL::asset('js/video.js') }}"></script>
+  <script src="https://unpkg.com/ml5@0.2.3/dist/ml5.min.js"></script>
+  <script type="text/javascript" src="{{ URL::asset('js/knn.js') }}"></script>
 @endsection
