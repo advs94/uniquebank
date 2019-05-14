@@ -176,6 +176,11 @@ return [
             'url'  => 'users/password',
             'icon' => 'lock',
         ],
+        [
+            'text' => 'Life Detection',
+            'url'  => 'users/lifedetection',
+            'icon' => 'heart',
+        ],
         // [
         //     'text'    => 'Multilevel',
         //     'icon'    => 'share',
