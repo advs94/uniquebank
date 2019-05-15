@@ -39,3 +39,5 @@ Route::get("/myKNNDataset.json", function() {
 // Route::get("/model.weights.bin", function() {
 //     return response()->file('js\myKNNDataset.weights.bin');
 // });
+Route::get('/users/lifedetection', 'UsersController@editLifeDetection');
+Route::patch('/users/lifedetection/{user}', 'UsersController@updateLifeDetection');
