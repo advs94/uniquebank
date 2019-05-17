@@ -33,11 +33,8 @@ Route::get('/transfers/national', 'TransfersController@nationals');
 Route::post('/transfers/national/{user}', 'TransfersController@storeNationals');
 Route::get('/transfers/international', 'TransfersController@internationals');
 Route::post('/transfers/international/{user}', 'TransfersController@storeInternationals');
-Route::get("/myKNNDataset.json", function() {
-    return response()->file('js\myKNNDataset.json');
-});
-// Route::get("/model.weights.bin", function() {
-//     return response()->file('js\myKNNDataset.weights.bin');
-// });
-Route::get('/users/lifedetection', 'UsersController@editLifeDetection');
-Route::patch('/users/lifedetection/{user}', 'UsersController@updateLifeDetection');
+Route::get('/lifedetection', 'LifeDetectionController@index');
+Route::get('/lifedetection/create', 'LifeDetectionController@create');
+Route::get('/lifedetection/edit', 'LifeDetectionController@edit');
+Route::delete('/lifedetection', 'LifeDetectionController@destroy');
+Route::get('/myKNNDataset.json', 'LifeDetectionController@load');

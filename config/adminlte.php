@@ -178,7 +178,7 @@ return [
         ],
         [
             'text' => 'Life Detection',
-            'url'  => 'users/lifedetection',
+            'url'  => 'lifedetection',
             'icon' => 'heart',
         ],
         // [

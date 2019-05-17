@@ -114,6 +114,24 @@ class UsersController extends Controller
      */
     public function destroy(User $user)
     {
+        $accounts = $user->accounts();
+
+        // falta implementar o parametro is_deleted ou is_active
+        // na configuração dos atributos de account
+        // consequentemente falta implementar a funcionalidade
+        // de apresentar apenas as contas ativas
+
+        foreach ($accounts as $account) {
+
+            $transfers = $account->transfers();
+
+            foreach ($transfers as $transfer) {
+                $transfer->delete();
+            }
+
+            $account->delete();
+        }
+
         $user->delete();
 
         return redirect('/users/profile');
@@ -138,49 +156,6 @@ class UsersController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function updatePassword(User $user)
-    {
-        $data = request()->all();
-
-        Validator::make($data, [
-            'current_password' => ['required', 'string', 'min:6', 'max:255'],
-            'new_password' => ['required', 'string', 'min:6', 'max:255', 'confirmed'],
-            'new_password_confirmation' => ['required', 'string', 'min:6', 'max:255'],
-        ])->validate();
-
-        if (!(Hash::check($data['current_password'], $user->password))) {
-            // The passwords matches
-            return redirect()->back()->with("error","Your current password does not matches with the password you provided. Please try again.");
-        }
-        if(strcmp($data['current_password'], $data['new_password']) == 0) {
-            //Current password and new password are same
-            return redirect()->back()->with("error","New Password cannot be same as your current password. Please choose a different password.");
-        }
-
-        $user->password = bcrypt($data['new_password']);
-        $user->save();
-
-        return redirect()->back()->with("success","Password changed successfully !");
-    }
-
-    /**
-     * Show the form for editing the life detection of the specified resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function editLifeDetection()
-    {
-        $user = \Auth::user();
-
-        return view('users.lifedetection', compact('user'));
-    }
-
-    /**
-     * Update the life detection of the specified resource in storage.
-     *
-     * @param  \UniqueBank\User  $user
-     * @return \Illuminate\Http\Response
-     */
-    public function updateLifeDetection(User $user)
     {
         $data = request()->all();
 
