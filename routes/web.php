@@ -12,14 +12,14 @@
 */
 
 Route::get('/', function () {
-    return view('home');
+    return view('vendor.adminlte.login');
 });
 
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/users/profile', 'UsersController@edit')->name('profile');
 Route::patch('/users/{user}', 'UsersController@update');
-Route::delete('/users/{user}', 'UsersController@destroy');
+Route::get('/users/{user}/delete', 'UsersController@destroy');
 Route::get('/users/password', 'UsersController@editPassword');
 Route::patch('/users/password/{user}', 'UsersController@updatePassword');
 Route::get('/accounts', 'AccountsController@index');

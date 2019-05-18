@@ -74,7 +74,7 @@ class AccountsController extends Controller
 
         $account->save();
 
-        return back();
+        return redirect('accounts')->with("success","Account created successfully !");
     }
 
     /**

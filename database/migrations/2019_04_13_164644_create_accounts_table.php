@@ -33,6 +33,6 @@ class CreateAccountsTable extends Migration
      */
     public function down()
     {
-        // Schema::dropIfExists('accounts');
+        Schema::dropIfExists('accounts');
     }
 }

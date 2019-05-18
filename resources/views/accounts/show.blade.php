@@ -4,6 +4,18 @@
 
 @section('content')
     <div class="container">
+
+        @if (session('error'))
+            <div class="alert alert-danger">
+                {{ session('error') }}
+            </div>
+        @endif
+        @if (session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
+
         <p><h1 class="title" style="margin-left:1%;">Profile</h1></p>
 
         @foreach ($user->accounts()->get() as $account)
