@@ -6,14 +6,16 @@ use Illuminate\Database\Eloquent\Model;
 
 class Transfer extends Model
 {
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
-    protected $fillable = [
-        'receiver_account_id', 'sender_account_id',
-    ];
+    protected $guarded = [];
+
+    // /**
+    //  * The attributes that should be hidden for arrays.
+    //  *
+    //  * @var array
+    //  */
+    // protected $fillable = [
+    //     'receiver_account_id', 'sender_account_id',
+    // ];
 
     /**
      * The attributes that should be cast to native types.

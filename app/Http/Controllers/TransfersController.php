@@ -3,10 +3,10 @@
 namespace UniqueBank\Http\Controllers;
 
 use UniqueBank\Transfer;
+use UniqueBank\Account;
+use UniqueBank\User;
 use Illuminate\Http\Request;
 use Auth;
-use UniqueBank\User;
-use UniqueBank\Account;
 use Validator;
 
 class TransfersController extends Controller
@@ -82,9 +82,13 @@ class TransfersController extends Controller
      * @param  \UniqueBank\Transfer  $transfer
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Transfer $transfer)
+    public function destroy(Account $account)
     {
-        //
+        foreach ($account->transfers as $transfer) {
+            return $transfer;
+        }
+
+        return json_encode($account);
     }
 
     /**
@@ -134,12 +138,14 @@ class TransfersController extends Controller
         $transfer->save();
 
         $receiver_account->balance += $transfer->amount;
+        $receiver_account->transfers()->attach($transfer->id);
         $receiver_account->save();
 
         $sender_account->balance -= $transfer->amount;
+        $sender_account->transfers()->attach($transfer->id);
         $sender_account->save();
 
-        return redirect()->back()->with("success","Transfer of ".$transfer->amount."€ to ".$user->name." permorfed successfully !");        
+        return redirect()->back()->with("success","Transfer of ".$transfer->amount."€ to ".$user->name." permorfed successfully !");
     }
 
     /**

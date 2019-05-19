@@ -9,8 +9,6 @@
 
 @section('content')
     <div class="container">
-        <p><h1 class="title" style="margin-left:1%;">Create Account</h1></p>
-
         <form class="form-horizontal" method="post" action="/accounts/{{ $user->id }}">
             @csrf
             

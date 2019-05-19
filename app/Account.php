@@ -6,14 +6,16 @@ use Illuminate\Database\Eloquent\Model;
 
 class Account extends Model
 {
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
-    protected $fillable = [
-        'balance', 'pin', 'nib', 'iban', 'user_id', 'type', 
-    ];
+    protected $guarded = [];
+
+    // /**
+    //  * The attributes that should be hidden for arrays.
+    //  *
+    //  * @var array
+    //  */
+    // protected $fillable = [
+    //     'balance', 'pin', 'nib', 'iban', 'user_id', 'type', 
+    // ];
 
     /**
      * The attributes that should be cast to native types.

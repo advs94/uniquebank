@@ -115,7 +115,6 @@ class UsersController extends Controller
     public function destroy(User $user)
     {
         $accounts = $user->accounts()->get();
-        // $user->delete();
 
         // falta implementar o parametro is_deleted ou is_active
         // na configuração dos atributos de account
@@ -124,12 +123,17 @@ class UsersController extends Controller
 
         foreach ($accounts as $account) {
 
-            // $account->delete();
+            $transfers = $account->transfers()->get();
 
-            foreach ($account->transfers as $transfer) {
-                // $transfer->delete();
+            foreach ($transfers as $transfer) {
+                $transfer->delete();
+                $transfer->save();
             }
+
+            $account->delete();
         }
+
+        $user->delete();
 
         return redirect('/users/profile');
     }

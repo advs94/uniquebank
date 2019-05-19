@@ -30,8 +30,22 @@
                                 <div class="row">
                                     <div class="col-md-12 lead">
                                         NIB
-                                        <div class="col-md-offset-8 lead">
-                                            <h4 class="lead" style="margin-top: -30px; margin-left: 60px;">{{ $account->nib }}</h4>
+                                        <div class="col-md-offset-7 lead">
+                                            <h4 class="lead" style="margin-top: -30px; margin-left: 107px;">
+                                                <?php 
+                                                    $string = ''; 
+                                                    $aux = "";
+                                                ?>
+                                                @for ($i = 0; $i < strlen($account->nib); $i++)
+                                                    @if ($i % 4 == 0 && $i != 0)
+                                                        <?php $string .= ' '; ?>                            
+                                                    @endif
+                                                    <?php 
+                                                        $string .= $account->nib[$i];
+                                                    ?>
+                                                @endfor
+                                                {{ $string }}
+                                            </h4>
                                         </div><hr>
                                     </div>
                                 </div>

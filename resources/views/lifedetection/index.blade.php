@@ -4,7 +4,6 @@
 
 @section('content')
     <div class="container">
-        <p><h1 class="title" style="margin-left:1%;">Life Detection</h1></p>
 
         @if (session('error'))
             <div class="alert alert-danger">
@@ -17,6 +16,8 @@
             </div>
         @endif
 
+        
+
         <?php
             try {
                 $lifedetection = response()->file('js\myKNNDataset.json');
@@ -26,27 +27,57 @@
         ?>
 
         @if ($lifedetection)
-            <h4 style="margin-top:3%;margin-left:1%;margin-bottom:2.8%;">You have Life Detection functionality activated</h4>
-
-            <form class="form-horizontal" method="post" action="/lifedetection">
-                @method('DELETE')
-                @csrf
-
-                <div class="form-group">
-                    <div class="col-sm-offset">
-                        <a href="/lifedetection/edit" class="btn btn-default" style="background-color: rgb(0, 100, 255); margin-left:26px; padding: 7px 15px">Update</a>
-                        <button type="submit" class="btn btn-default" style="background-color: rgb(0, 100, 255); margin-left:6px; padding: 7px 15px">Delete</button>
+            <div class="row">
+                    <div class="col-md-7">
+                        <div class="panel panel-default" style="margin-top: 20px;">
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-md-12 lead">Life Detection<hr></div>
+                                </div>
+                                <div class="row">
+                                    <div>
+                                        <h5 class="lead" style="margin-left: 20px;">You have Life Detection functionality activated</h5>
+                                    </div>
+                                </div>
+                                <form class="form-horizontal" method="post" action="/lifedetection">
+                                    @method('DELETE')
+                                    @csrf
+                    
+                                    <div class="row" style="margin-top: 2%;">
+                                        <div>
+                                            <a href="/lifedetection/edit" class="btn btn-default" style="background-color: rgb(0, 100, 255); margin-left:26px; padding: 7px 15px; font-size: 130%;">Update</a>
+                                            <button type="submit" class="btn btn-default" style="background-color: rgb(0, 100, 255); margin-left:6px; padding: 7px 15px; font-size: 130%;">Delete</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </form>
-        @else
-            <h4 style="margin-top:3%;margin-left:1%;margin-bottom:2.8%;">You don't have Life Detection functionality activated</h4>
-
-            <div class="form-group">
-                <div class="col-sm-offset">
-                    <a href="/lifedetection/create" class="btn btn-default" style="background-color: rgb(0, 100, 255); margin-left:12px; padding: 7px 15px">Activate</a>
-                </div>
             </div>
+        @else
+            <div class="row">
+                    <div class="col-md-7">
+                        <div class="panel panel-default" style="margin-top: 20px;">
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-md-12 lead">Life Detection<hr></div>
+                                </div>
+                                <div class="row" style="margin-top: 0;">
+                                    <div>
+                                        <h5 class="lead" style="margin-left: 20px;">You don't have Life Detection functionality activated</h5>
+                                    </div>
+                                </div>
+                                <div class="row" style="margin-top: 2%;">
+                                    <div>
+                                        <a href="/lifedetection/create" class="btn btn-default" style="background-color: rgb(0, 100, 255); margin-left:12px; padding: 7px 15px; font-size: 130%;">Activate</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>    
         @endif
     </div>    
 @endsection
