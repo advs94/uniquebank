@@ -82,13 +82,9 @@ class TransfersController extends Controller
      * @param  \UniqueBank\Transfer  $transfer
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Account $account)
+    public function destroy(Transfer $transfer)
     {
-        foreach ($account->transfers as $transfer) {
-            return $transfer;
-        }
-
-        return json_encode($account);
+        //
     }
 
     /**
@@ -111,22 +107,31 @@ class TransfersController extends Controller
      */
     public function storeNationals(User $user)
     {
-        $data = request()->all();
+        $data = request([
+            'nib', 'account', 'amount', 'pin', 'pin_confirmation'
+        ]);
 
         Validator::make($data, [
             'nib' => ['required', 'string', 'min:21', 'max:21'],
             'account' => ['required', 'string', 'min:21', 'max:21'],
             'amount' => ['required', 'integer', 'min:1'],
+            'pin' => ['required', 'digits:4', 'confirmed'],
+            'pin_confirmation' => ['required', 'digits:4'],
         ])->validate();
 
         $sender_account = $user->accounts()->whereNib($data['account'])->first();
         $receiver_account = Account::whereNib($data['nib'])->first();
 
-        if(!isset($receiver_account->id)) {
+        if(!isset($receiver_account->id))
+        {
             return redirect()->back()->with("error","Account not associated with NIB inserted !");                    
-        } else if($data['amount'] > $sender_account->balance) {
+        }
+        else if($data['amount'] > $sender_account->balance)
+        {
             return redirect()->back()->with("error","Unavailable amount !");        
-        } else if($receiver_account->id == $sender_account->id) {
+        }
+        else if($receiver_account->id == $sender_account->id)
+        {
             return redirect()->back()->with("error","Sending and receiving accounts cannot be the same !");        
         }
 
@@ -135,6 +140,8 @@ class TransfersController extends Controller
         $transfer->receiver_account_id = $receiver_account->id;
         $transfer->amount = $data['amount'];
         $transfer->type = 'national';
+        $transfer->pin = $data['pin'];
+        
         $transfer->save();
 
         $receiver_account->balance += $transfer->amount;
@@ -168,13 +175,6 @@ class TransfersController extends Controller
      */
     public function storeInternationals(User $user)
     {
-        $data = request()->all();
-
-        Validator::make($data, [
-            'iban' => ['required', 'string', 'min:25', 'max:25'],
-            'amount' => ['required', 'integer', 'min:1'],
-        ])->validate();
-
-        return redirect()->back()->with("success","Transfer performed successfully !");        
+        //    
     }
 }

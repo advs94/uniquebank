@@ -39,7 +39,7 @@
                                     <label for="account" class="col-md-3" style="max-width:none"><h5 class="lead">From</h5></label>
                                     <div class="col-md-offset-3 has-feedback {{ $errors->has('account') ? 'has-error' : '' }}" style="margin-top: 10px;">
                                         <select name="account" id="account" class="form-control" style="width: 94%">
-                                            @foreach ($user->accounts()->get() as $account)
+                                            @foreach ($user->accounts as $account)
                                                 <?php 
                                                     $string = ''; 
                                                     $aux = "";
@@ -78,6 +78,30 @@
                                         @if ($errors->has('amount'))
                                             <span class="help-block">
                                                 <strong>{{ $errors->first('amount') }}</strong>
+                                            </span>
+                                        @endif
+                                    </div>
+                                </div>
+                                <div class="form-group row" style="margin-left:0%;">
+                                    <label for="pin" class="col-md-3" style="max-width:none"><h5 class="lead">PIN</h5></label>
+                                    <div class="col-md-offset-3 has-feedback {{ $errors->has('pin') ? 'has-error' : '' }}" style="margin-top: 10px;">
+                                        <input type="password" id="pin" name="pin" class="form-control lead" style="width: 94%" placeholder="ex: 7481">
+                                        <span class="glyphicon glyphicon-lock form-control-feedback" style="right: 6%;"></span>
+                                        @if ($errors->has('pin'))
+                                            <span class="help-block">
+                                                <strong>{{ $errors->first('pin') }}</strong>
+                                            </span>
+                                        @endif
+                                    </div>
+                                </div>
+                                <div class="form-group row" style="margin-left:0%;">
+                                    <label for="pin_confirmation" class="col-md-3" style="max-width:none"><h5 class="lead">Confirm PIN</h5></label>
+                                    <div class="col-md-offset-3 has-feedback {{ $errors->has('pin_confirmation') ? 'has-error' : '' }}" style="margin-top: 10px;">
+                                        <input type="password" id="pin_confirmation" name="pin_confirmation" class="form-control" style="width: 94%">
+                                        <span class="glyphicon glyphicon-lock form-control-feedback" style="right: 6%;"></span>
+                                        @if ($errors->has('pin_confirmation'))
+                                            <span class="help-block">
+                                                <strong>{{ $errors->first('pin_confirmation') }}</strong>
                                             </span>
                                         @endif
                                     </div>

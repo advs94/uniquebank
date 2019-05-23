@@ -18,7 +18,6 @@ class CreateAccountTransferTable extends Migration
             $table->foreign('account_id')->references('id')->on('accounts');
             $table->unsignedInteger('transfer_id')->nullable(false);
             $table->foreign('transfer_id')->references('id')->on('transfers');
-            $table->timestamps();
             $table->primary(['account_id', 'transfer_id']);
         });
     }

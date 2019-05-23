@@ -43,11 +43,14 @@ class AccountsController extends Controller
      */
     public function store(User $user)
     {
-        $data = request()->all();
+        $data = request([
+            'type', 'pin', 'pin_confirmation'
+        ]);
 
         $accountTypes = "";
 
-        foreach (config('enums.account_types') as $accountType) {
+        foreach (config('enums.account_types') as $accountType)
+        {
             $accountTypes .= $accountType.',';
         }
 
@@ -59,12 +62,18 @@ class AccountsController extends Controller
             'pin_confirmation' => ['required', 'digits:4'],
         ])->validate();
         
+        if($user->accounts()->where('type', $data['type'])->first())
+        {
+            return redirect('accounts')->with("error", "You already have a ".ucwords($data['type'])." account !");
+        }
+
         $account = new Account();
         $account->balance = 0;
         $account->pin = $data['pin'];
         $account->nib = rand(0, 9);        
 
-        for ($i = 1; $i < 21; $i++) {
+        for ($i = 0; $i < 20; $i++)
+        {
             $account->nib = rand(0, 9).$account->nib;
         }
 
