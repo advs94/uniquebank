@@ -13,7 +13,8 @@ class CreateTransfersTable extends Migration
      */
     public function up()
     {
-        Schema::create('transfers', function (Blueprint $table) {
+        Schema::create('transfers', function (Blueprint $table)
+        {
             $table->increments('id');
             $table->unsignedInteger('sender_account_id')->nullable(false);
             $table->foreign('sender_account_id')->references('id')->on('accounts');

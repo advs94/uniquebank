@@ -13,7 +13,8 @@ class CreateAccountsTable extends Migration
      */
     public function up()
     {
-        Schema::create('accounts', function (Blueprint $table) {
+        Schema::create('accounts', function (Blueprint $table)
+        {
             $table->increments('id');
             $table->integer('balance')->nullable(false);
             $table->smallInteger('pin')->nullable(false);

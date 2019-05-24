@@ -13,7 +13,8 @@ class CreateAccountTransferTable extends Migration
      */
     public function up()
     {
-        Schema::create('account_transfer', function (Blueprint $table) {
+        Schema::create('account_transfer', function (Blueprint $table) 
+        {
             $table->unsignedInteger('account_id')->nullable(false);
             $table->foreign('account_id')->references('id')->on('accounts');
             $table->unsignedInteger('transfer_id')->nullable(false);
