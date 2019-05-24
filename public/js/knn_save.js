@@ -35,6 +35,39 @@ function draw() {
     text(confirmation, 480, height - 15);
 }
 
+function left()
+{
+    features = featureExtractor.infer(video);
+    knnClassifier.addExample(features, 'left');
+    console.log('left');
+}
+
+function right()
+{
+    features = featureExtractor.infer(video);
+    knnClassifier.addExample(features, 'right');
+    console.log('right');
+}
+
+function happy()
+{
+    features = featureExtractor.infer(video);
+    knnClassifier.addExample(features, 'happy');
+    console.log('happy');
+}
+
+function sad()
+{
+    features = featureExtractor.infer(video);
+    knnClassifier.addExample(features, 'sad');
+    console.log('sad');
+}
+
+function ok()
+{
+    window.location=document.referrer;
+}
+
 function addButtons() {
     // happyButton = createButton('Happy Example');
     // // happyButton.position(x, y);
@@ -44,53 +77,53 @@ function addButtons() {
     //     console.log('happy');
     // });
     
-    sadButton = createButton('Sad Example');
-    // sadButton.position(x, y);
-    sadButton.mousePressed(function() {
-        features = featureExtractor.infer(video);
-        knnClassifier.addExample(features, 'sad');
-        console.log('sad');
-    });
+    // sadButton = createButton('Sad Example');
+    // // sadButton.position(x, y);
+    // sadButton.mousePressed(function() {
+    //     features = featureExtractor.infer(video);
+    //     knnClassifier.addExample(features, 'sad');
+    //     console.log('sad');
+    // });
 
-    neutralButton = createButton('Neutral Example');
-    // neutralButton.position(x, y);
-    neutralButton.mousePressed(function() {
-        features = featureExtractor.infer(video);
-        knnClassifier.addExample(features, 'neutral');
-        console.log('neutral');
-    });
+    // neutralButton = createButton('Neutral Example');
+    // // neutralButton.position(x, y);
+    // neutralButton.mousePressed(function() {
+    //     features = featureExtractor.infer(video);
+    //     knnClassifier.addExample(features, 'neutral');
+    //     console.log('neutral');
+    // });
 
-    leftButton = createButton('Left Example');
-    // leftButton.position(x, y);
-    leftButton.mousePressed(function() {
-        features = featureExtractor.infer(video);
-        knnClassifier.addExample(features, 'left');
-        console.log('left');
-    });
+    // leftButton = createButton('Left Example');
+    // // leftButton.position(x, y);
+    // leftButton.mousePressed(function() {
+    //     features = featureExtractor.infer(video);
+    //     knnClassifier.addExample(features, 'left');
+    //     console.log('left');
+    // });
 
-    rightButton = createButton('Right Example');
-    // rightButton.position(x, y);
-    rightButton.mousePressed(function() {
-        features = featureExtractor.infer(video);
-        knnClassifier.addExample(features, 'right');
-        console.log('right');
-    });
+    // rightButton = createButton('Right Example');
+    // // rightButton.position(x, y);
+    // rightButton.mousePressed(function() {
+    //     features = featureExtractor.infer(video);
+    //     knnClassifier.addExample(features, 'right');
+    //     console.log('right');
+    // });
     
-    predictButton = createButton('Start Predicting');
-    // predictButton.position(x, y);
-    predictButton.mousePressed(function() {
-        predict();
-    });
+    // predictButton = createButton('Start Predicting');
+    // // predictButton.position(x, y);
+    // predictButton.mousePressed(function() {
+    //     predict();
+    // });
     
-    saveButton = createButton('Save Dataset');
-    // saveButton.position(x, y);
-    saveButton.mousePressed(saveMyKNN);
+    // saveButton = createButton('Save Dataset');
+    // // saveButton.position(x, y);
+    // saveButton.mousePressed(saveMyKNN);
 
-    okButton = createButton('OK');
-    // okButton.position(x, y);
-    okButton.mousePressed(function() {
-        window.location=document.referrer;
-    });
+    // okButton = createButton('OK');
+    // // okButton.position(x, y);
+    // okButton.mousePressed(function() {
+    //     window.location=document.referrer;
+    // });
 
     // loadButton = createButton('Load Dataset');
     // // loadButton.position(x, y);
@@ -112,7 +145,23 @@ function gotResult(error, result) {
 }
 
 function saveMyKNN() {
-    knnClassifier.save('myKNNDataset');
+    // const url = 'process.php'
+    // const form = document.querySelector('form')
+
+    // form.addEventListener('submit', e => {
+    //     e.preventDefault()
+
+    //     const files = document.querySelector('[type=file]').files
+    //     const formData = new FormData()
+    //     formData.append('file', file)
+
+    //     fetch(url, {
+    //         method: 'POST',
+    //         body: formData,
+    //     }).then(response => {
+    //         console.log(response)
+    //     })
+    // })
 }
 
 function loadMyKNN() {

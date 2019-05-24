@@ -45,7 +45,9 @@ class LifeDetectionController extends Controller
      */
     public function show()
     {
-        //
+        // $file = request()->;
+
+        // return request()->all();
     }
 
     /**

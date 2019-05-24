@@ -39,3 +39,4 @@ Route::get('/lifedetection/edit', 'LifeDetectionController@edit');
 Route::delete('/lifedetection', 'LifeDetectionController@destroy');
 Route::get('/myKNNDataset.json', 'LifeDetectionController@load');
 Route::get('/transfers/{transfer}', 'TransfersController@destroy');
+// Route::get('/lifedetection/post', 'LifeDetectionController@show');
