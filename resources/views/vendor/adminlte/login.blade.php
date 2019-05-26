@@ -55,6 +55,18 @@
                     <!-- /.col -->
                 </div>
             </form>
+            <form action="lifedetection/email" method="get">
+                {!! csrf_field() !!}
+                <div class="row">
+                    <label style="margin-left: 158px;">
+                        {{ trans('or') }}
+                    </label>
+                </div>
+                <div class="row" style="margin-left: 2px; margin-right: 2px; margin-bottom: 20px; margin-top: 10px;">
+                    <button type="submit"
+                            class="btn btn-primary btn-block btn-flat">{{ 'Life Detection' }}</button>
+                </div>
+            </form>
             <div class="auth-links">
                 <a href="{{ url(config('adminlte.password_reset_url', 'password/reset')) }}"
                    class="text-center"

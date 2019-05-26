@@ -4,6 +4,7 @@ namespace UniqueBank\Http\Controllers;
 
 use Illuminate\Http\Request;
 use File;
+use UniqueBank\User;
 
 class LifeDetectionController extends Controller
 {
@@ -41,9 +42,7 @@ class LifeDetectionController extends Controller
         auth()->user()->life_detection = $url;
         auth()->user()->save();
 
-        $user = auth()->user();
-
-        return view('transfers.nationals', compact('user'));
+        return redirect('/lifedetection')->with("success","Life Detection activated successfuly !");
     }
 
     /**
@@ -53,9 +52,11 @@ class LifeDetectionController extends Controller
      */
     public function show()
     {
-        // $file = request()->;
+        $email = request('email');
 
-        // return request()->all();
+        $user = User::whereEmail($email)->first();
+
+        return view('lifedetection.show', compact('user'));
     }
 
     /**
@@ -103,5 +104,15 @@ class LifeDetectionController extends Controller
     public function load()
     {
         return response()->file('js\myKNNDataset.json');
+    }
+
+    /**
+     * Load the specified resource from storage.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function email()
+    {
+        return view('lifedetection.email');
     }
 }

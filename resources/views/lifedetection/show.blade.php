@@ -3,6 +3,7 @@
 @section('title', 'Life Detection')
 
 @section('content')
+
     <div class="container">
 
         @if (session('error'))
@@ -29,7 +30,7 @@
                                 <button type="button" id="right" onclick="right()"class="btn btn-default" style="background-color: rgb(0, 100, 255); margin-left:12px; padding: 7px 15px; font-size: 130%;">Right</a>
                                 <button type="button" id="happy" onclick="happy()"class="btn btn-default" style="background-color: rgb(0, 100, 255); margin-left:12px; padding: 7px 15px; font-size: 130%;">Happy</a>                           
                                 <button type="button" id="sad" onclick="sad()" class="btn btn-default" style="background-color: rgb(0, 100, 255); margin-left:12px; padding: 7px 15px; font-size: 130%;">Sad</a>
-                                <button type="button" id="predict" onclick="predict()" class="btn btn-default" style="background-color: rgb(0, 100, 255); margin-left:12px; padding: 7px 15px; font-size: 130%;">Predict</a>  --}}
+                                <button type="button" id="predict" onclick="predict()" class="btn btn-default" style="background-color: rgb(0, 100, 255); margin-left:12px; padding: 7px 15px; font-size: 130%;">Predict</a> --}}
                                 <button type="button" id="save" onclick="save2()" class="btn btn-default" style="background-color: rgb(0, 100, 255); margin-left:12px; padding: 7px 15px; font-size: 130%;">Save</a>                  
                                 <button type="button" id="ok" onclick="ok()" class="btn btn-default" style="background-color: rgb(0, 100, 255); margin-left:12px; padding: 7px 15px; font-size: 130%;">OK</a>                                   
                             </div>
@@ -39,6 +40,8 @@
             </div>
         </div>
     </div>
+    <?php
+    ?>
 @endsection
 
 @section('adminlte_js')
@@ -46,5 +49,5 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.8.0/p5.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.8.0/addons/p5.dom.min.js"></script>
     <script src="https://unpkg.com/ml5@latest/dist/ml5.min.js" type="text/javascript"></script>
-    <script type="text/javascript" src="{{ URL::asset('js/posenet_save.js') }}"></script>
+    <script type="text/javascript" src="{{ URL::asset('js/posenet_load.js') }}"></script>
 @stop
