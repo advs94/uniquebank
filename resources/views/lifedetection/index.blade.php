@@ -25,11 +25,6 @@
         ?>
 
         @if ($lifedetection)
-            <?php
-                auth()->user()->life_detection = file_get_contents('storage\myKNNDataset.json');
-                auth()->user()->save();
-            ?>
-
             <div class="row">
                 <div class="col-md-7">
                     <div class="panel panel-default" style="margin-top: 20px;">

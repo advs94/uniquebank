@@ -7,11 +7,13 @@ let features;
 let happylabel = 0;
 let sadlabel = 0;
 
-function modelReady() {
+function modelReady()
+{
     console.log('Model is ready!!!');
 }
 
-function setup() {
+function setup()
+{
     var cnv = createCanvas(640, 540);
     //cnv.style('display', 'block');
     var x = (windowWidth - width) / 2;
@@ -26,7 +28,8 @@ function setup() {
     addButtons();
 }
 
-function draw() {
+function draw()
+{
     background(0);
     image(video, 0, 0, 640, 500);
     fill(255);
@@ -162,6 +165,7 @@ function saveMyKNN() {
     //         console.log(response)
     //     })
     // })
+    
 }
 
 function loadMyKNN() {

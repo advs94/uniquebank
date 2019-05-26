@@ -35,7 +35,15 @@ class LifeDetectionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $url = url()->full();
+        $url = substr($url, strpos($url, '?')+1);
+
+        auth()->user()->life_detection = $url;
+        auth()->user()->save();
+
+        $user = auth()->user();
+
+        return view('transfers.nationals', compact('user'));
     }
 
     /**
