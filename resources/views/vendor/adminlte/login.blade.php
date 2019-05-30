@@ -10,6 +10,19 @@
 
 @section('body')
     <div class="login-box">
+        
+        @if (session('error'))
+            <div class="alert alert-danger">
+                {{ session('error') }}
+            </div>
+        @endif
+        
+        @if (session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
+
         <div class="login-logo">
             <a href="{{ url(config('adminlte.dashboard_url', 'home')) }}">{!! config('adminlte.logo', '<b>Admin</b>LTE') !!}</a>
         </div>
@@ -40,38 +53,15 @@
                     @endif
                 </div>
                 <div class="row">
-                    <div class="col-xs-8">
-                        <div class="checkbox icheck">
-                            <label>
-                                <input type="checkbox" name="remember"> {{ trans('adminlte::adminlte.remember_me') }}
-                            </label>
-                        </div>
-                    </div>
                     <!-- /.col -->
-                    <div class="col-xs-4">
+                    <div class="col-xs-12">
                         <button type="submit"
                                 class="btn btn-primary btn-block btn-flat">{{ trans('adminlte::adminlte.sign_in') }}</button>
                     </div>
                     <!-- /.col -->
                 </div>
             </form>
-            <form action="lifedetection/email" method="get">
-                {!! csrf_field() !!}
-                <div class="row">
-                    <label style="margin-left: 158px;">
-                        {{ trans('or') }}
-                    </label>
-                </div>
-                <div class="row" style="margin-left: 2px; margin-right: 2px; margin-bottom: 20px; margin-top: 10px;">
-                    <button type="submit"
-                            class="btn btn-primary btn-block btn-flat">{{ 'Life Detection' }}</button>
-                </div>
-            </form>
             <div class="auth-links">
-                <a href="{{ url(config('adminlte.password_reset_url', 'password/reset')) }}"
-                   class="text-center"
-                >{{ trans('adminlte::adminlte.i_forgot_my_password') }}</a>
-                <br>
                 @if (config('adminlte.register_url', 'register'))
                     <a href="{{ url(config('adminlte.register_url', 'register')) }}"
                        class="text-center"

@@ -56,7 +56,12 @@ class LifeDetectionController extends Controller
 
         $user = User::whereEmail($email)->first();
 
-        return view('lifedetection.show', compact('user'));
+        if(!is_null($user->life_detection))
+        {
+            return view('lifedetection.show', compact('user'));
+        }
+
+        return redirect('/login')->with("error","Life Detection is deactivated on your account !");
     }
 
     /**
@@ -114,5 +119,15 @@ class LifeDetectionController extends Controller
     public function email()
     {
         return view('lifedetection.email');
+    }
+
+    /**
+     * Load the specified resource from storage.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function choice()
+    {
+        return view('lifedetection.choice');
     }
 }

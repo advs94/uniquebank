@@ -26,13 +26,50 @@
                         </div>
                         <div class="row" style="margin-top: 2%;">
                             <div style="margin-top: 580px;">
-                                {{-- <button type="button" id="left" onclick="left()" class="btn btn-default" style="background-color: rgb(0, 100, 255); margin-left:12px; padding: 7px 15px; font-size: 130%;">Left</a>
-                                <button type="button" id="right" onclick="right()"class="btn btn-default" style="background-color: rgb(0, 100, 255); margin-left:12px; padding: 7px 15px; font-size: 130%;">Right</a>
-                                <button type="button" id="happy" onclick="happy()"class="btn btn-default" style="background-color: rgb(0, 100, 255); margin-left:12px; padding: 7px 15px; font-size: 130%;">Happy</a>                           
-                                <button type="button" id="sad" onclick="sad()" class="btn btn-default" style="background-color: rgb(0, 100, 255); margin-left:12px; padding: 7px 15px; font-size: 130%;">Sad</a>
-                                <button type="button" id="predict" onclick="predict()" class="btn btn-default" style="background-color: rgb(0, 100, 255); margin-left:12px; padding: 7px 15px; font-size: 130%;">Predict</a> --}}
-                                <button type="button" id="save" onclick="save2()" class="btn btn-default" style="background-color: rgb(0, 100, 255); margin-left:12px; padding: 7px 15px; font-size: 130%;">Save</a>                  
-                                <button type="button" id="ok" onclick="ok()" class="btn btn-default" style="background-color: rgb(0, 100, 255); margin-left:12px; padding: 7px 15px; font-size: 130%;">OK</a>                                   
+                                <?php 
+                                    $aux = explode("&", $user->life_detection);
+                                    $userID = $user->id;
+
+                                    $lifedetection[0] = explode("=", $aux[0])[1];
+                                    $lifedetection[1] = explode("=", $aux[1])[1];
+                                    $lifedetection[2] = explode("=", $aux[12])[1];
+                                    $lifedetection[3] = explode("=", $aux[14])[1];
+                                    $lifedetection[4] = explode("=", $aux[15])[1];
+                                    $lifedetection[5] = explode("=", $aux[16])[1];
+                                    $lifedetection[6] = explode("=", $aux[17])[1];
+                                    $lifedetection[7] = explode("=", $aux[18])[1];
+                                    $lifedetection[8] = explode("=", $aux[19])[1];
+                                    $lifedetection[9] = explode("=", $aux[20])[1];
+                                    $lifedetection[10] = explode("=", $aux[2])[1];
+                                    $lifedetection[11] = explode("=", $aux[3])[1];
+                                    $lifedetection[12] = explode("=", $aux[4])[1];
+                                    $lifedetection[13] = explode("=", $aux[5])[1];
+                                    $lifedetection[14] = explode("=", $aux[6])[1];
+                                    $lifedetection[15] = explode("=", $aux[7])[1];
+                                    $lifedetection[16] = explode("=", $aux[8])[1];
+                                    $lifedetection[17] = explode("=", $aux[9])[1];
+                                    $lifedetection[18] = explode("=", $aux[10])[1];
+                                    $lifedetection[19] = explode("=", $aux[11])[1];
+                                    $lifedetection[20] = explode("=", $aux[13])[1];
+
+                                    echo '<script>';
+                                    echo 'let lifedetection = ' . json_encode($lifedetection) . ';';
+                                    echo 'let userID = ' . json_encode($userID) . ';';                                    
+                                    echo '</script>';
+                                ?>
+
+                                {{-- <form action="/lifedetection/authenticate/success" method="post">
+                                    {!! csrf_field() !!}
+
+                                    <button type="button" id="left" onclick="left()" class="btn btn-default" style="background-color: rgb(0, 100, 255); margin-left:12px; padding: 7px 15px; font-size: 130%;">Left</a>
+                                    <button type="button" id="right" onclick="right()"class="btn btn-default" style="background-color: rgb(0, 100, 255); margin-left:12px; padding: 7px 15px; font-size: 130%;">Right</a>
+                                    <button type="button" id="happy" onclick="happy()"class="btn btn-default" style="background-color: rgb(0, 100, 255); margin-left:12px; padding: 7px 15px; font-size: 130%;">Happy</a>                           
+                                    <button type="button" id="sad" onclick="sad()" class="btn btn-default" style="background-color: rgb(0, 100, 255); margin-left:12px; padding: 7px 15px; font-size: 130%;">Sad</a>
+                                    <button type="button" id="predict" onclick="predict()" class="btn btn-default" style="background-color: rgb(0, 100, 255); margin-left:12px; padding: 7px 15px; font-size: 130%;">Predict</a>
+                                    <button type="button" id="save" onclick="save2()" class="btn btn-default" style="background-color: rgb(0, 100, 255); margin-left:12px; padding: 7px 15px; font-size: 130%;">Save</button>                 
+                                    <button type="button" id="ok" onclick="ok()" class="btn btn-default" style="background-color: rgb(0, 100, 255); margin-left:12px; padding: 7px 15px; font-size: 130%;">OK</button>                                   
+                                    <button type="submit" class="btn btn-default" style="background-color: rgb(0, 100, 255); margin-left:6px; padding: 7px 15px; font-size: 130%;">Submit</button>                                    
+                                </form> --}}
                             </div>
                         </div>
                     </div>
@@ -40,8 +77,6 @@
             </div>
         </div>
     </div>
-    <?php
-    ?>
 @endsection
 
 @section('adminlte_js')

@@ -11,11 +11,8 @@
 |
 */
 
-Route::get('/', function () {
-    return view('vendor.adminlte.login');
-});
-
 Auth::routes();
+Route::get('/', 'LifeDetectionController@choice');
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/users/profile', 'UsersController@edit')->name('profile');
 Route::patch('/users/{user}', 'UsersController@update');
@@ -42,3 +39,7 @@ Route::get('/transfers/{transfer}', 'TransfersController@destroy');
 Route::get('/lifedetection/store', 'LifeDetectionController@store');
 Route::get('/lifedetection/email', 'LifeDetectionController@email');
 Route::post('/lifedetection/authenticate', 'LifeDetectionController@show');
+Route::get('/login', function() {
+    return view('auth.login');
+});
+// Route::get('/home', 'LifeDetectionController@show')->name('home');

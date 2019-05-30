@@ -137,28 +137,28 @@ function save2()
     // 17 = left ear to right shoulder
     distance[17] = int(dist(poses[0].pose.keypoints[3].position.x, poses[0].pose.keypoints[3].position.y, poses[0].pose.keypoints[6].position.x, poses[0].pose.keypoints[6].position.y));
     // 18 = right ear to left shoulder
-    distance[18] = int(dist(poses[0].pose.keypoints[4].position.x, poses[0].pose.keypoints[4].position.y, poses[0].pose.keypoints[5].position.x, poses[0].pose.keypoints[5].position.y));;
+    distance[18] = int(dist(poses[0].pose.keypoints[4].position.x, poses[0].pose.keypoints[4].position.y, poses[0].pose.keypoints[5].position.x, poses[0].pose.keypoints[5].position.y));
     // 19 = right ear to right shoulder
-    distance[19] = int(dist(poses[0].pose.keypoints[4].position.x, poses[0].pose.keypoints[4].position.y, poses[0].pose.keypoints[6].position.x, poses[0].pose.keypoints[6].position.y));;
+    distance[19] = int(dist(poses[0].pose.keypoints[4].position.x, poses[0].pose.keypoints[4].position.y, poses[0].pose.keypoints[6].position.x, poses[0].pose.keypoints[6].position.y));
     // 20 = left shoulder to right shoulder
-    distance[20] = int(dist(poses[0].pose.keypoints[5].position.x, poses[0].pose.keypoints[5].position.y, poses[0].pose.keypoints[6].position.x, poses[0].pose.keypoints[6].position.y));;
+    distance[20] = int(dist(poses[0].pose.keypoints[5].position.x, poses[0].pose.keypoints[5].position.y, poses[0].pose.keypoints[6].position.x, poses[0].pose.keypoints[6].position.y));
     
 
     history.pushState({}, "", "store");
-    window.location.href = window.location.href + "?" + "x0=" + int(poses[0].pose.keypoints[0].position.x) + "&"
-                                                      + "y0=" + int(poses[0].pose.keypoints[0].position.y) + "&"
-                                                      + "x1=" + int(poses[0].pose.keypoints[1].position.x) + "&"
-                                                      + "y1=" + int(poses[0].pose.keypoints[1].position.y) + "&"
-                                                      + "x2=" + int(poses[0].pose.keypoints[2].position.x) + "&"
-                                                      + "y2=" + int(poses[0].pose.keypoints[2].position.y) + "&"
-                                                      + "x3=" + int(poses[0].pose.keypoints[3].position.x) + "&"
-                                                      + "y3=" + int(poses[0].pose.keypoints[3].position.y) + "&"
-                                                      + "x4=" + int(poses[0].pose.keypoints[4].position.x) + "&"
-                                                      + "y4=" + int(poses[0].pose.keypoints[4].position.y) + "&"
-                                                      + "x5=" + int(poses[0].pose.keypoints[5].position.x) + "&"
-                                                      + "y5=" + int(poses[0].pose.keypoints[5].position.y) + "&"
-                                                      + "x6=" + int(poses[0].pose.keypoints[6].position.x) + "&"
-                                                      + "y6=" + int(poses[0].pose.keypoints[6].position.y) + "&"
+    window.location.href = window.location.href + "?" // + "x0=" + int(poses[0].pose.keypoints[0].position.x) + "&"
+                                                    //   + "y0=" + int(poses[0].pose.keypoints[0].position.y) + "&"
+                                                    //   + "x1=" + int(poses[0].pose.keypoints[1].position.x) + "&"
+                                                    //   + "y1=" + int(poses[0].pose.keypoints[1].position.y) + "&"
+                                                    //   + "x2=" + int(poses[0].pose.keypoints[2].position.x) + "&"
+                                                    //   + "y2=" + int(poses[0].pose.keypoints[2].position.y) + "&"
+                                                    //   + "x3=" + int(poses[0].pose.keypoints[3].position.x) + "&"
+                                                    //   + "y3=" + int(poses[0].pose.keypoints[3].position.y) + "&"
+                                                    //   + "x4=" + int(poses[0].pose.keypoints[4].position.x) + "&"
+                                                    //   + "y4=" + int(poses[0].pose.keypoints[4].position.y) + "&"
+                                                    //   + "x5=" + int(poses[0].pose.keypoints[5].position.x) + "&"
+                                                    //   + "y5=" + int(poses[0].pose.keypoints[5].position.y) + "&"
+                                                    //   + "x6=" + int(poses[0].pose.keypoints[6].position.x) + "&"
+                                                    //   + "y6=" + int(poses[0].pose.keypoints[6].position.y) + "&"
                                                       + "d0=" + distance[0] + "&"
                                                       + "d1=" + distance[1] + "&"
                                                       + "d2=" + distance[2] + "&"

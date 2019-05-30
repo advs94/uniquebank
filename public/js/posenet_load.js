@@ -51,12 +51,12 @@ function draw()
     drawSkeleton();
 }
 
-function ok()
-{
-    img = video.get();
-    img.loadPixels();
-    console.log(img.pixels);
-}
+// function ok()
+// {
+//     img = video.get();
+//     img.loadPixels();
+//     console.log(img.pixels);
+// }
 
 function drawKeypoints()  {
     // Loop through all the poses detected
@@ -89,16 +89,6 @@ function drawSkeleton() {
 }
 
 function gotPoses()
-{
-    if(img)
-    {
-        console.log('Image is ready !');
-    }
-
-    console.log(poses);
-}
-
-function save2()
 {
     // 0 = nose to left eye
     distance[0] = int(dist(poses[0].pose.keypoints[0].position.x, poses[0].pose.keypoints[0].position.y, poses[0].pose.keypoints[1].position.x, poses[0].pose.keypoints[1].position.y));
@@ -137,47 +127,33 @@ function save2()
     // 17 = left ear to right shoulder
     distance[17] = int(dist(poses[0].pose.keypoints[3].position.x, poses[0].pose.keypoints[3].position.y, poses[0].pose.keypoints[6].position.x, poses[0].pose.keypoints[6].position.y));
     // 18 = right ear to left shoulder
-    distance[18] = int(dist(poses[0].pose.keypoints[4].position.x, poses[0].pose.keypoints[4].position.y, poses[0].pose.keypoints[5].position.x, poses[0].pose.keypoints[5].position.y));;
+    distance[18] = int(dist(poses[0].pose.keypoints[4].position.x, poses[0].pose.keypoints[4].position.y, poses[0].pose.keypoints[5].position.x, poses[0].pose.keypoints[5].position.y));
     // 19 = right ear to right shoulder
-    distance[19] = int(dist(poses[0].pose.keypoints[4].position.x, poses[0].pose.keypoints[4].position.y, poses[0].pose.keypoints[6].position.x, poses[0].pose.keypoints[6].position.y));;
+    distance[19] = int(dist(poses[0].pose.keypoints[4].position.x, poses[0].pose.keypoints[4].position.y, poses[0].pose.keypoints[6].position.x, poses[0].pose.keypoints[6].position.y));
     // 20 = left shoulder to right shoulder
-    distance[20] = int(dist(poses[0].pose.keypoints[5].position.x, poses[0].pose.keypoints[5].position.y, poses[0].pose.keypoints[6].position.x, poses[0].pose.keypoints[6].position.y));;
-    
+    distance[20] = int(dist(poses[0].pose.keypoints[5].position.x, poses[0].pose.keypoints[5].position.y, poses[0].pose.keypoints[6].position.x, poses[0].pose.keypoints[6].position.y));
 
-    history.pushState({}, "", "store");
-    window.location.href = window.location.href + "?" + "x0=" + int(poses[0].pose.keypoints[0].position.x) + "&"
-                                                      + "y0=" + int(poses[0].pose.keypoints[0].position.y) + "&"
-                                                      + "x1=" + int(poses[0].pose.keypoints[1].position.x) + "&"
-                                                      + "y1=" + int(poses[0].pose.keypoints[1].position.y) + "&"
-                                                      + "x2=" + int(poses[0].pose.keypoints[2].position.x) + "&"
-                                                      + "y2=" + int(poses[0].pose.keypoints[2].position.y) + "&"
-                                                      + "x3=" + int(poses[0].pose.keypoints[3].position.x) + "&"
-                                                      + "y3=" + int(poses[0].pose.keypoints[3].position.y) + "&"
-                                                      + "x4=" + int(poses[0].pose.keypoints[4].position.x) + "&"
-                                                      + "y4=" + int(poses[0].pose.keypoints[4].position.y) + "&"
-                                                      + "x5=" + int(poses[0].pose.keypoints[5].position.x) + "&"
-                                                      + "y5=" + int(poses[0].pose.keypoints[5].position.y) + "&"
-                                                      + "x6=" + int(poses[0].pose.keypoints[6].position.x) + "&"
-                                                      + "y6=" + int(poses[0].pose.keypoints[6].position.y) + "&"
-                                                      + "d0=" + distance[0] + "&"
-                                                      + "d1=" + distance[1] + "&"
-                                                      + "d2=" + distance[2] + "&"
-                                                      + "d3=" + distance[3] + "&"
-                                                      + "d4=" + distance[4] + "&"
-                                                      + "d5=" + distance[5] + "&"
-                                                      + "d6=" + distance[6] + "&"
-                                                      + "d7=" + distance[7] + "&"
-                                                      + "d8=" + distance[8] + "&"
-                                                      + "d9=" + distance[9] + "&"
-                                                      + "d10=" + distance[10] + "&"
-                                                      + "d11=" + distance[11] + "&"
-                                                      + "d12=" + distance[12] + "&"
-                                                      + "d13=" + distance[13] + "&"
-                                                      + "d14=" + distance[14] + "&"
-                                                      + "d15=" + distance[15] + "&"
-                                                      + "d16=" + distance[16] + "&"
-                                                      + "d17=" + distance[17] + "&"
-                                                      + "d18=" + distance[18] + "&"
-                                                      + "d19=" + distance[19] + "&"
-                                                      + "d20=" + distance[20] + "&";
+    let i;
+
+    for (i = 0; i < distance.length; i++)
+    {
+        if(distance[i] <= (lifedetection[i] * 0.9) || distance[i] >= lifedetection[i] * 1.1)
+        {
+            // console.log(distance[i]);
+            // console.log(lifedetection[i] * 0.9);
+            // console.log(lifedetection[i] * 1.1);
+            break;
+        }
+    }
+
+    if(i == 21)
+    {
+        console.log('You made it!!!!!!');
+        // $.post('/authenticate/success', {variable: i});
+        // window.location.href = 'http://localhost:8000'.concat('?userID='.concat(userID));
+    }
+
+    // console.log(distance);
+    // console.log(lifedetection);
+    // console.log(i);
 }

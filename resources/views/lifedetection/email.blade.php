@@ -15,7 +15,7 @@
         </div>
         <!-- /.login-logo -->
         <div class="login-box-body">
-            <p class="login-box-msg">{{ trans('adminlte::adminlte.login_message') }}</p>
+            <p class="login-box-msg">Life Detection activated</p>
             <form action="authenticate" method="post">
                 {!! csrf_field() !!}
                 <div class="form-group has-feedback {{ $errors->has('email') ? 'has-error' : '' }}">
