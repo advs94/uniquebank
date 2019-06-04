@@ -22,6 +22,7 @@ class CreateUsersTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password')->nullable(false);
             $table->longText('life_detection')->nullable();
+            $table->boolean('life_detection_confirmed')->default(false);
             $table->rememberToken();
             $table->timestamps();
         });

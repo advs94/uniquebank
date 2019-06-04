@@ -35,10 +35,12 @@ function setup()
     video.size(640, 500);
 
     poseNet = ml5.poseNet(video, modelReady);
-    poseNet.on('pose', function (results) {
-        poses = results;
-        gotPoses();
-    });
+    setTimeout(function() {
+        poseNet.on('pose', function (results) {
+            poses = results;
+            gotPoses();
+        });
+      }, 1000);
 
     video.hide();
 }
@@ -150,7 +152,27 @@ function gotPoses()
     {
         console.log('You made it!!!!!!');
         // $.post('/authenticate/success', {variable: i});
-        // window.location.href = 'http://localhost:8000'.concat('?userID='.concat(userID));
+
+        var mysql = require('mysql');
+
+        var con = mysql.createConnection({
+            host: "localhost",
+            user: "root",
+            password: "",
+            database: "tutorial"
+        });
+
+        con.connect(function(err) {
+            if (err) throw err;
+            //Update the life_detection_confirmed field:
+            var sql = "UPDATE user SET life_detection_confirmed = 'true' WHERE id = " + userID;
+            con.query(sql, function (err, result) {
+                if (err) throw err;
+                console.log(result.affectedRows + " record(s) updated");
+            });
+        });
+
+        window.location.href = 'http://localhost:8000'.concat('?userID='.concat(userID));
     }
 
     // console.log(distance);

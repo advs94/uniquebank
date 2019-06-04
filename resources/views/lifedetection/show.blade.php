@@ -54,7 +54,7 @@
 
                                     echo '<script>';
                                     echo 'let lifedetection = ' . json_encode($lifedetection) . ';';
-                                    echo 'let userID = ' . json_encode($userID) . ';';                                    
+                                    echo 'let userID = ' . json_encode($userID) . ';';
                                     echo '</script>';
                                 ?>
 
