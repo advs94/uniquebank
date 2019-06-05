@@ -19,21 +19,11 @@
 
             <div class="row">
                 <!-- /.col -->
-                <div class="col-xs-12">
-                    <a href="/login" method='get'
-                    class="btn btn-primary btn-block btn-flat">{{ 'Usual Authentication' }}</a>
+                <div class="col-xs-12" style="margin-bottom: 7px;">
+                    <a href="/lifedetection/email" method='get'
+                    class="btn btn-primary btn-block btn-flat">{{ 'Login' }}</a>
                 </div>
                 <!-- /.col -->
-            </div>
-
-            <div class="row">
-                <label style="margin-left: 158px; margin-top: 13px;">
-                    {{ trans('or') }}
-                </label>
-            </div>
-            <div class="row" style="margin-left: 2px; margin-right: 2px; margin-bottom: 20px; margin-top: 10px;">
-                <a href="/lifedetection/email" method='get'
-                    class="btn btn-primary btn-block btn-flat">{{ 'Life Detection' }}</a>
             </div>
 
             <div class="auth-links">

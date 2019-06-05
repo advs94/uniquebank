@@ -153,26 +153,26 @@ function gotPoses()
         console.log('You made it!!!!!!');
         // $.post('/authenticate/success', {variable: i});
 
-        var mysql = require('mysql');
+        // var mysql = require('gulp');
 
-        var con = mysql.createConnection({
-            host: "localhost",
-            user: "root",
-            password: "",
-            database: "tutorial"
-        });
+        // var con = mysql.createConnection({
+        //     host: "localhost",
+        //     user: "root",
+        //     password: "",
+        //     database: "tutorial"
+        // });
 
-        con.connect(function(err) {
-            if (err) throw err;
-            //Update the life_detection_confirmed field:
-            var sql = "UPDATE user SET life_detection_confirmed = 'true' WHERE id = " + userID;
-            con.query(sql, function (err, result) {
-                if (err) throw err;
-                console.log(result.affectedRows + " record(s) updated");
-            });
-        });
+        // con.connect(function(err) {
+        //     if (err) throw err;
+        //     //Update the life_detection_confirmed field:
+        //     var sql = "UPDATE user SET life_detection_confirmed = 'true' WHERE id = " + userID;
+        //     con.query(sql, function (err, result) {
+        //         if (err) throw err;
+        //         console.log(result.affectedRows + " record(s) updated");
+        //     });
+        // });
 
-        window.location.href = 'http://localhost:8000'.concat('?userID='.concat(userID));
+        window.location.href = 'http://localhost:8000/login'.concat('?userEmail='.concat(userEmail));
     }
 
     // console.log(distance);

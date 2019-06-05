@@ -32,9 +32,14 @@
             <form action="{{ url(config('adminlte.login_url', 'login')) }}" method="post">
                 {!! csrf_field() !!}
 
+                <?php
+                    $url = url()->full();
+                    $url2 = substr($url, strpos($url, '%')+3);
+                    $url1 = str_replace("%40".$url2, "", substr($url, strpos($url, '=')+1));
+                ?>
+
                 <div class="form-group has-feedback {{ $errors->has('email') ? 'has-error' : '' }}">
-                    <input type="email" name="email" class="form-control" value="{{ old('email') }}"
-                           placeholder="{{ trans('adminlte::adminlte.email') }}">
+                    <input type="email" name="email" class="form-control" value="{{ $url1.'@'.$url2 }}">
                     <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
                     @if ($errors->has('email'))
                         <span class="help-block">

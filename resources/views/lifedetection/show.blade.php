@@ -26,9 +26,9 @@
                         </div>
                         <div class="row" style="margin-top: 2%;">
                             <div style="margin-top: 580px;">
-                                <?php 
+                                <?php
                                     $aux = explode("&", $user->life_detection);
-                                    $userID = $user->id;
+                                    $userEmail = $user->email;
 
                                     $lifedetection[0] = explode("=", $aux[0])[1];
                                     $lifedetection[1] = explode("=", $aux[1])[1];
@@ -54,7 +54,7 @@
 
                                     echo '<script>';
                                     echo 'let lifedetection = ' . json_encode($lifedetection) . ';';
-                                    echo 'let userID = ' . json_encode($userID) . ';';
+                                    echo 'let userEmail = ' . json_encode($userEmail) . ';';
                                     echo '</script>';
                                 ?>
 
@@ -84,5 +84,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.8.0/p5.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.8.0/addons/p5.dom.min.js"></script>
     <script src="https://unpkg.com/ml5@latest/dist/ml5.min.js" type="text/javascript"></script>
+    <script src="https://requirejs.org/docs/release/2.3.5/minified/require.js" type="text/javascript"></script> 
     <script type="text/javascript" src="{{ URL::asset('js/posenet_load.js') }}"></script>
 @stop
