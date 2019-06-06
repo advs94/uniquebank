@@ -18,7 +18,9 @@ class TransfersController extends Controller
      */
     public function index()
     {
-        //
+        $user = Auth::user();   
+
+        return view('transfers.index', compact('user'));
     }
 
     /**
@@ -122,15 +124,19 @@ class TransfersController extends Controller
         $sender_account = $user->accounts()->whereNib($data['account'])->first();
         $receiver_account = Account::whereNib($data['nib'])->first();
 
+        if($data['pin'] != $sender_account->pin)
+        {
+            return redirect()->back()->with("error","Incorrect PIN !");
+        }
         if(!isset($receiver_account->id))
         {
             return redirect()->back()->with("error","Account not associated with NIB inserted !");                    
         }
-        else if($data['amount'] > $sender_account->balance)
+        if($data['amount'] > $sender_account->balance)
         {
             return redirect()->back()->with("error","Unavailable amount !");        
         }
-        else if($receiver_account->id == $sender_account->id)
+        if($receiver_account->id == $sender_account->id)
         {
             return redirect()->back()->with("error","Sending and receiving accounts cannot be the same !");        
         }
@@ -140,7 +146,6 @@ class TransfersController extends Controller
         $transfer->receiver_account_id = $receiver_account->id;
         $transfer->amount = $data['amount'];
         $transfer->type = 'national';
-        $transfer->pin = $data['pin'];
         
         $transfer->save();
 

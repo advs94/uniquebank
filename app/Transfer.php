@@ -26,6 +26,8 @@ class Transfer extends Model
         'sender_account_id' => 'integer',
     ];
 
+    protected $table = 'transfers';
+
     /**
      * Get the accounts which performed the transfers.
      */

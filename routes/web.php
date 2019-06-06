@@ -42,4 +42,6 @@ Route::post('/lifedetection/authenticate', 'LifeDetectionController@show');
 Route::get('/login', function() {
     return view('auth.login');
 });
+Route::get('/transfers', 'TransfersController@index');
+
 // Route::get('/home', 'LifeDetectionController@show')->name('home');

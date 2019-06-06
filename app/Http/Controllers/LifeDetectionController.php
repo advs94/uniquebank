@@ -98,6 +98,9 @@ class LifeDetectionController extends Controller
     {
         File::delete('js\myKNNDataset.json');
 
+        auth()->user()->life_detection = null;
+        auth()->user()->save();
+
         return redirect()->back()->with("success","Life Detection funtionality deactivated successfuly !");
     }
 

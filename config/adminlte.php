@@ -153,11 +153,7 @@ return [
                 ],
                 [
                     'text' => 'Account Movements',
-                    'url' => 'projects/create',
-                ],
-                [
-                    'text' => 'Duplicate Bill',
-                    'url' => 'projects/create',
+                    'url' => 'transfers',
                 ],
                 [
                     'text' => 'NIB & IBAN',

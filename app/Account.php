@@ -29,6 +29,8 @@ class Account extends Model
         'user_id' => 'integer',
     ];
 
+    protected $table = 'accounts';
+
     /**
      * Get the user that owns the accounts.
      */

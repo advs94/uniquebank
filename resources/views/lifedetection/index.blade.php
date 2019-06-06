@@ -18,7 +18,7 @@
 
         <?php
             try {
-                $lifedetection = file_exists('storage\myKNNDataset.json');
+                $lifedetection = auth()->user()->life_detection;
             } catch (Exception $exception) {
                 $lifedetection = null;
             }
