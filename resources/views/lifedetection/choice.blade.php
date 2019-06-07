@@ -20,7 +20,7 @@
             <div class="row">
                 <!-- /.col -->
                 <div class="col-xs-12" style="margin-bottom: 7px;">
-                    <a href="/lifedetection/email" method='get'
+                    <a href="/email" method='get'
                     class="btn btn-primary btn-block btn-flat">{{ 'Login' }}</a>
                 </div>
                 <!-- /.col -->

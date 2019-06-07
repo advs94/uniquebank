@@ -137,10 +137,6 @@ return [
                     'text' => 'National Transfers',
                     'url' => 'transfers/national',
                 ],
-                [
-                    'text' => 'International Transfers',
-                    'url' => 'transfers/international',
-                ],
             ],
         ],
         [

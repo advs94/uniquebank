@@ -9,14 +9,25 @@
 @section('body_class', 'login-page')
 
 @section('body')
+
     <div class="login-box">
+        <?php
+            if(strcmp(substr(url()->full(), strpos(url()->full(), '?')+1, 7), 'noPoses') == 0)
+            {
+                ?>
+                    <div class="alert alert-danger">
+                        {{ 'Human Undetected!' }}
+                    </div>
+                <?php
+            }
+        ?>
         <div class="login-logo">
             <a href="{{ url(config('adminlte.dashboard_url', 'home')) }}">{!! config('adminlte.logo', '<b>Admin</b>LTE') !!}</a>
         </div>
         <!-- /.login-logo -->
         <div class="login-box-body">
             <p class="login-box-msg">Life Detection activated</p>
-            <form action="authenticate" method="post">
+            <form action="lifedetection/authenticate" method="post">
                 {!! csrf_field() !!}
                 <div class="form-group has-feedback {{ $errors->has('email') ? 'has-error' : '' }}">
                     <input type="email" name="email" class="form-control" value="{{ old('email') }}"

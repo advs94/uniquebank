@@ -38,6 +38,13 @@ function setup()
     setTimeout(function() {
         poseNet.on('pose', function (results) {
             poses = results;
+
+            if(poses.length == 0) 
+            {
+                window.location.href = 'http://localhost:8000/email'.concat('?noPoses');
+                canvas = null;
+            }
+            
             gotPoses();
         });
       }, 1000);

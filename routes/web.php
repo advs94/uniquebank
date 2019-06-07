@@ -37,7 +37,7 @@ Route::delete('/lifedetection', 'LifeDetectionController@destroy');
 Route::get('/myKNNDataset.json', 'LifeDetectionController@load');
 Route::get('/transfers/{transfer}', 'TransfersController@destroy');
 Route::get('/lifedetection/store', 'LifeDetectionController@store');
-Route::get('/lifedetection/email', 'LifeDetectionController@email');
+Route::get('/email', 'LifeDetectionController@email');
 Route::post('/lifedetection/authenticate', 'LifeDetectionController@show');
 Route::get('/login', function() {
     return view('auth.login');

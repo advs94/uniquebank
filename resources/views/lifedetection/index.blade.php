@@ -5,6 +5,18 @@
 @section('content')
     <div class="container">
 
+        <?php
+            if(strcmp(substr(url()->full(), strpos(url()->full(), '?')+1, 7), 'noPoses') == 0)
+            {
+                ?>
+                    <div class="alert alert-danger">
+                        {{ 'Human Undetected!' }}
+                    </div>
+                <?php
+            }
+        ?>
+        
+
         @if (session('error'))
             <div class="alert alert-danger">
                 {{ session('error') }}

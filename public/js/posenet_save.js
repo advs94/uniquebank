@@ -37,6 +37,13 @@ function setup()
     poseNet = ml5.poseNet(video, modelReady);
     poseNet.on('pose', function (results) {
         poses = results;
+
+        if(poses.length == 0) 
+        {
+            window.location.href = 'http://localhost:8000/lifedetection'.concat('?noPoses');
+            canvas = null;
+        }
+
         gotPoses();
     });
 
@@ -94,6 +101,8 @@ function gotPoses()
     {
         console.log('Image is ready !');
     }
+
+    
 
     console.log(poses);
 }

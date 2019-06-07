@@ -40,7 +40,7 @@
                             <div class="panel panel-default" style="margin-top: 20px;">
                                 <div class="panel-body">
                                     <div class="row">
-                                        <div class="col-md-12 lead" style="margin-top: -3%;">
+                                        <div class="col-md-12 lead">
                                             From
                                             <div class="col-md-offset-7 lead">
                                                 <h4 class="lead" style="margin-top: -30px; margin-left: 60px;">
@@ -65,7 +65,7 @@
                                         <div class="col-md-12 lead" style="margin-top: -3%;">
                                             To
                                             <div class="col-md-offset-7 lead">
-                                                <h4 class="lead" style="margin-top: -30px; margin-left: 60px; margin-bottom: -12%;">
+                                                <h4 class="lead" style="margin-top: -30px; margin-left: 60px;">
                                                     <?php 
                                                         $string = ''; 
                                                         $aux = "";
@@ -79,6 +79,16 @@
                                                         ?>
                                                     @endfor
                                                     {{ $string }}
+                                                </h4>
+                                            </div><hr>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12 lead" style="margin-top: -3%;">
+                                            Amount
+                                            <div class="col-md-offset-7 lead">
+                                                <h4 class="lead" style="margin-top: -30px; margin-left: 60px; margin-bottom: -12%;">
+                                                    {{ $transfer->amount.' €' }}
                                                 </h4>
                                             </div>
                                         </div>

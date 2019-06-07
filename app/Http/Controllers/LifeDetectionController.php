@@ -61,7 +61,7 @@ class LifeDetectionController extends Controller
             return view('lifedetection.show', compact('user'));
         }
 
-        return redirect('/login')->with("error","Life Detection is deactivated on your account !");
+        return redirect('/login?email='.$email)->with("error","Life Detection is deactivated on your account !");
     }
 
     /**
