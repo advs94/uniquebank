@@ -111,7 +111,7 @@ class LifeDetectionController extends Controller
      */
     public function load()
     {
-        return response()->file('js\myKNNDataset.json');
+        return response()->file('js\myKNN.json');
     }
 
     /**
@@ -132,5 +132,15 @@ class LifeDetectionController extends Controller
     public function choice()
     {
         return view('lifedetection.choice');
+    }
+
+    /**
+     * Load the specified resource from storage.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function validation()
+    {
+        return view('lifedetection.validate');
     }
 }

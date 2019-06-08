@@ -9,6 +9,9 @@ let skeletons = [];
 let json;
 let distance = [];
 let img;
+let label = "Click OK when you're ready";
+let confirmation = 'Click Save after OK';
+let bool = false;
 
 function videoReady()
 {
@@ -35,16 +38,37 @@ function setup()
     video.size(640, 500);
 
     poseNet = ml5.poseNet(video, modelReady);
-    poseNet.on('pose', function (results) {
+    poseNet.on('pose', function (results)
+    {
+        bool = false;
         poses = results;
+        gotPoses();
 
         if(poses.length == 0) 
         {
             window.location.href = 'http://localhost:8000/lifedetection'.concat('?noPoses');
-            canvas = null;
+            return;
+            // asd;
         }
 
-        gotPoses();
+        if(poses.length > 1)
+        {
+            poses.forEach(aux => {
+                // console.log(aux.pose.score);
+                if(aux.pose.score < 0.2)
+                {
+                    console.log('aux' + aux.pose.score);
+                    bool = true;
+                }
+            });
+
+            if(bool == false)
+            {
+                window.location.href = 'http://localhost:8000/lifedetection'.concat('?multiplePoses');
+                asd;
+            }
+        }
+
     });
 
     video.hide();
@@ -52,10 +76,15 @@ function setup()
 
 function draw()
 {
-    image(video, 0, 0, 640, 500);
+    background(0);
+    image(video, 0, 0, 640, 460);
+    fill(255);
+    textSize(16);
+    text(label, 10, height - 15);
+    text(confirmation, 480, height - 15);
 
-    drawKeypoints();
-    drawSkeleton();
+    // drawKeypoints();
+    // drawSkeleton();
 }
 
 function ok()
@@ -65,15 +94,19 @@ function ok()
     console.log(img.pixels);
 }
 
-function drawKeypoints()  {
+function drawKeypoints() 
+{
     // Loop through all the poses detected
-    for (let i = 0; i < poses.length; i++) {
+    for (let i = 0; i < poses.length; i++)
+    {
         // For each pose detected, loop through all the keypoints
-        for (let j = 0; j < poses[i].pose.keypoints.length; j++) {
+        for (let j = 0; j < poses[i].pose.keypoints.length; j++)
+        {
             // A keypoint is an object describing a body part (like rightArm or leftShoulder)
             let keypoint = poses[i].pose.keypoints[j];
             // Only draw an ellipse is the pose probability is bigger than 0.2
-            if (keypoint.score > 0.2) {
+            if (keypoint.score > 0.2)
+            {
                 fill(255, 0, 0);
                 noStroke();
                 ellipse(keypoint.position.x, keypoint.position.y, 10, 10);
@@ -82,11 +115,14 @@ function drawKeypoints()  {
     }
 }
   
-function drawSkeleton() {
+function drawSkeleton()
+{
     // Loop through all the skeletons detected
-    for (let i = 0; i < poses.length; i++) {
+    for (let i = 0; i < poses.length; i++)
+    {
         // For every skeleton, loop through all body connections
-        for (let j = 0; j < poses[i].skeleton.length; j++) {
+        for (let j = 0; j < poses[i].skeleton.length; j++)
+        {
             let partA = poses[i].skeleton[j][0];
             let partB = poses[i].skeleton[j][1];
             stroke(255, 0, 0);
@@ -101,8 +137,6 @@ function gotPoses()
     {
         console.log('Image is ready !');
     }
-
-    
 
     console.log(poses);
 }
@@ -189,4 +223,5 @@ function save2()
                                                       + "d18=" + distance[18] + "&"
                                                       + "d19=" + distance[19] + "&"
                                                       + "d20=" + distance[20] + "&";
+                                                      asd;
 }

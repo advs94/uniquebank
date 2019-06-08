@@ -1,10 +1,16 @@
-@extends('adminlte::page')
+@extends('adminlte::master')
 
-@section('title', 'Life Detection')
+@section('adminlte_css')
+    <link rel="stylesheet" href="{{ asset('vendor/adminlte/plugins/iCheck/square/blue.css') }}">
+    <link rel="stylesheet" href="{{ asset('vendor/adminlte/css/auth.css') }}">
+    @yield('css')
+@stop
 
-@section('content')
+@section('body_class', 'login-page')
 
-    <div class="container">
+@section('body')
+
+    <div class="login-box" style="position: relative; width: 1000px; margin-top: 40px;">
 
         @if (session('error'))
             <div class="alert alert-danger">
@@ -18,11 +24,13 @@
         @endif
 
         <div class="row">
-            <div class="col-md-10">
-                <div class="panel panel-default" style="margin-top: 20px;">
+            <div class="col-md-11">
+                <div class="panel panel-default" style="margin-top: 90px;">
                     <div class="panel-body">
                         <div class="row">
-                            <div class="col-md-12 lead">Life Detection<hr></div>
+                            <div class="login-logo">
+                                <a href="{{ url(config('adminlte.dashboard_url', 'home')) }}">{!! config('adminlte.logo', '<b>Admin</b>LTE') !!}</a>
+                            </div>
                         </div>
                         <div class="row" style="margin-top: 2%;">
                             <div style="margin-top: 580px;">
@@ -70,6 +78,7 @@
                                     <button type="button" id="ok" onclick="ok()" class="btn btn-default" style="background-color: rgb(0, 100, 255); margin-left:12px; padding: 7px 15px; font-size: 130%;">OK</button>                                   
                                     <button type="submit" class="btn btn-default" style="background-color: rgb(0, 100, 255); margin-left:6px; padding: 7px 15px; font-size: 130%;">Submit</button>                                    
                                 </form> --}}
+                                <div class="col-md-12 lead" style="margin-top: -40px;">Detecting {{ $user->name }}</div>
                             </div>
                         </div>
                     </div>

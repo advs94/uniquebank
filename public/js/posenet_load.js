@@ -9,6 +9,7 @@ let skeletons = [];
 let json;
 let distance = [];
 let img;
+let bool = false;
 
 function videoReady()
 {
@@ -27,8 +28,8 @@ function poseReady()
 
 function setup()
 {
-    canvas = createCanvas(640, 500);
-    x = (windowWidth - width) / 2;
+    canvas = createCanvas(660, 520);
+    x = (windowWidth - width - 90) / 2;
     y = (windowHeight - height) / 2;
     canvas.position(x, y);
     video = createCapture(VIDEO, videoReady);
@@ -36,13 +37,33 @@ function setup()
 
     poseNet = ml5.poseNet(video, modelReady);
     setTimeout(function() {
-        poseNet.on('pose', function (results) {
+        poseNet.on('pose', function (results) 
+        {
+            bool = false;
             poses = results;
+            console.log(poses);
 
             if(poses.length == 0) 
             {
                 window.location.href = 'http://localhost:8000/email'.concat('?noPoses');
-                canvas = null;
+                asd;
+            }
+
+            if(poses.length > 1 )
+            {
+                poses.forEach(aux => {
+                    // console.log(aux.pose.score);
+                    if(aux.pose.score < 0.1)
+                    {
+                        bool = true;
+                    }
+                });
+    
+                if(bool == false)
+                {
+                    window.location.href = 'http://localhost:8000/email'.concat('?multiplePoses');
+                    asd;
+                }
             }
             
             gotPoses();
@@ -54,10 +75,15 @@ function setup()
 
 function draw()
 {
-    image(video, 0, 0, 640, 500);
+    background(0);
+    x = (windowWidth - width - 1240) / 2;
+    y = (windowHeight - height - 430) / 2;
+    image(video, x, y, 640, 500);
+    fill(255);
+    textSize(16);
 
-    drawKeypoints();
-    drawSkeleton();
+    // drawKeypoints();
+    // drawSkeleton();
 }
 
 // function ok()
@@ -146,7 +172,7 @@ function gotPoses()
 
     for (i = 0; i < distance.length; i++)
     {
-        if(distance[i] <= (lifedetection[i] * 0.9) || distance[i] >= lifedetection[i] * 1.1)
+        if(distance[i] <= (lifedetection[i] * 0.8) || distance[i] >= lifedetection[i] * 1.2)
         {
             // console.log(distance[i]);
             // console.log(lifedetection[i] * 0.9);
@@ -179,7 +205,8 @@ function gotPoses()
         //     });
         // });
 
-        window.location.href = 'http://localhost:8000/login'.concat('?userEmail='.concat(userEmail));
+        window.location.href = 'http://localhost:8000/lifedetection/validation' + '?' + 'email=' + userEmail;
+        asd;
     }
 
     // console.log(distance);

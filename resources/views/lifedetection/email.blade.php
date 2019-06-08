@@ -11,8 +11,9 @@
 @section('body')
 
     <div class="login-box">
+        
         <?php
-            if(strcmp(substr(url()->full(), strpos(url()->full(), '?')+1, 7), 'noPoses') == 0)
+            if(strcmp(substr(url()->full(), strpos(url()->full(), '?')+1, strlen('noPoses')), 'noPoses') == 0)
             {
                 ?>
                     <div class="alert alert-danger">
@@ -20,7 +21,16 @@
                     </div>
                 <?php
             }
+            if(strcmp(substr(url()->full(), strpos(url()->full(), '?')+1, strlen('multiplePoses')), 'multiplePoses') == 0)
+            {
+                ?>
+                    <div class="alert alert-danger">
+                        {{ 'Multiple Humans Detected!' }}
+                    </div>
+                <?php
+            }
         ?>
+        
         <div class="login-logo">
             <a href="{{ url(config('adminlte.dashboard_url', 'home')) }}">{!! config('adminlte.logo', '<b>Admin</b>LTE') !!}</a>
         </div>

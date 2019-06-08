@@ -3,10 +3,11 @@
 @section('title', 'Life Detection')
 
 @section('content')
+    
     <div class="container">
 
         <?php
-            if(strcmp(substr(url()->full(), strpos(url()->full(), '?')+1, 7), 'noPoses') == 0)
+            if(strcmp(substr(url()->full(), strpos(url()->full(), '?')+1, strlen('noPoses')), 'noPoses') == 0)
             {
                 ?>
                     <div class="alert alert-danger">
@@ -14,8 +15,15 @@
                     </div>
                 <?php
             }
+            if(strcmp(substr(url()->full(), strpos(url()->full(), '?')+1, strlen('multiplePoses')), 'multiplePoses') == 0)
+            {
+                ?>
+                    <div class="alert alert-danger">
+                        {{ 'Multiple Humans Detected!' }}
+                    </div>
+                <?php
+            }
         ?>
-        
 
         @if (session('error'))
             <div class="alert alert-danger">
@@ -66,27 +74,26 @@
             </div>
         @else
             <div class="row">
-                    <div class="col-md-7">
-                        <div class="panel panel-default" style="margin-top: 20px;">
-                            <div class="panel-body">
-                                <div class="row">
-                                    <div class="col-md-12 lead">Life Detection<hr></div>
+                <div class="col-md-7">
+                    <div class="panel panel-default" style="margin-top: 20px;">
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-md-12 lead">Life Detection<hr></div>
+                            </div>
+                            <div class="row" style="margin-top: 0;">
+                                <div>
+                                    <h5 class="lead" style="margin-left: 20px;">You don't have Life Detection functionality activated</h5>
                                 </div>
-                                <div class="row" style="margin-top: 0;">
-                                    <div>
-                                        <h5 class="lead" style="margin-left: 20px;">You don't have Life Detection functionality activated</h5>
-                                    </div>
-                                </div>
-                                <div class="row" style="margin-top: 2%;">
-                                    <div>
-                                        <a href="/lifedetection/create" class="btn btn-default" style="background-color: rgb(0, 100, 255); margin-left:12px; padding: 7px 15px; font-size: 130%;">Activate</a>
-                                    </div>
+                            </div>
+                            <div class="row" style="margin-top: 2%;">
+                                <div>
+                                    <a href="/lifedetection/create" class="btn btn-default" style="background-color: rgb(0, 100, 255); margin-left:12px; padding: 7px 15px; font-size: 130%;">Activate</a>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>    
+            </div>
         @endif
     </div>    
 @endsection

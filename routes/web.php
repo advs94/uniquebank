@@ -43,5 +43,5 @@ Route::get('/login', function() {
     return view('auth.login');
 });
 Route::get('/transfers', 'TransfersController@index');
-
-// Route::get('/home', 'LifeDetectionController@show')->name('home');
+Route::get('/lifedetection/validation', 'LifeDetectionController@validation');
+Route::get('/lifedetection/myKNN.json', 'LifeDetectionController@load');
