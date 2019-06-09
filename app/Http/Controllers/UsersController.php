@@ -142,7 +142,7 @@ class UsersController extends Controller
 
         $user->delete();
 
-        return redirect('/users/profile');
+        return redirect('/login?userEmail=@');
     }
 
     /**

@@ -4,7 +4,7 @@
 
 @section('content')
     <div class="container">
-        <h1 class="title" style="margin-bottom: 3%;">NIB & IBAN Consult</h1>
+        <h1 class="title" style="margin-bottom: 3%;">Accounts Movements</h1>
 
         <?php
             $auxTransfers = array();

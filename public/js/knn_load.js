@@ -87,5 +87,5 @@ function loadMyKNN() {
     knnClassifier.load('./myKNN.json');
     setTimeout(function() {
         predict();
-    }, 1000);
+    }, 2000);
 }
