@@ -15,6 +15,11 @@ class LifeDetectionController extends Controller
      */
     public function index()
     {
+        if(!auth()->user())
+        {
+            return redirect('')->with("error","You do not have access to that page. Authenticate please.");
+        }
+
         return view('lifedetection.index');
     }
 
@@ -25,6 +30,11 @@ class LifeDetectionController extends Controller
      */
     public function create()
     {
+        if(!auth()->user())
+        {
+            return redirect('')->with("error","You do not have access to that page. Authenticate please.");
+        }
+
         return view('lifedetection.create');
     }
 
@@ -36,6 +46,11 @@ class LifeDetectionController extends Controller
      */
     public function store(Request $request)
     {
+        if(!auth()->user())
+        {
+            return redirect('')->with("error","You do not have access to that page. Authenticate please.");
+        }
+
         $url = url()->full();
         $url = substr($url, strpos($url, '?')+1);
 
@@ -72,6 +87,11 @@ class LifeDetectionController extends Controller
      */
     public function edit()
     {
+        if(!auth()->user())
+        {
+            return redirect('')->with("error","You do not have access to that page. Authenticate please.");
+        }
+
         File::delete('js\myKNNDataset.json');
 
         return view('lifedetection.create');
@@ -96,6 +116,11 @@ class LifeDetectionController extends Controller
      */
     public function destroy()
     {
+        if(!auth()->user())
+        {
+            return redirect('')->with("error","You do not have access to that page. Authenticate please.");
+        }
+        
         File::delete('js\myKNNDataset.json');
 
         auth()->user()->life_detection = null;
@@ -111,6 +136,11 @@ class LifeDetectionController extends Controller
      */
     public function load()
     {
+        if(!auth()->user())
+        {
+            return redirect('')->with("error","You do not have access to that page. Authenticate please.");
+        }
+        
         return response()->file('js\myKNN.json');
     }
 
@@ -120,7 +150,7 @@ class LifeDetectionController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function email()
-    {
+    {  
         return view('lifedetection.email');
     }
 
@@ -140,7 +170,7 @@ class LifeDetectionController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function validation()
-    {
+    { 
         return view('lifedetection.validate');
     }
 }

@@ -59,5 +59,5 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.8.0/addons/p5.dom.min.js"></script>
     <script src="https://unpkg.com/ml5@latest/dist/ml5.min.js" type="text/javascript"></script>
     <script src="https://requirejs.org/docs/release/2.3.5/minified/require.js" type="text/javascript"></script> 
-    <script type="text/javascript" src="{{ URL::asset('js/knn_load.js') }}"></script>
+    <script type="text/javascript" src="{{ URL::asset('js/posenet_gestures.js') }}"></script>
 @stop

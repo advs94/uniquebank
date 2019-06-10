@@ -83,8 +83,32 @@ function draw()
     text(label, 10, height - 15);
     text(confirmation, 480, height - 15);
 
-    // drawKeypoints();
-    // drawSkeleton();
+    // if (typeof poses[0] !== 'undefined')
+    // {
+    //     stroke(255, 0, 0);
+    //     line(poses[0].pose.keypoints[0].position.x, poses[0].pose.keypoints[0].position.y, poses[0].pose.keypoints[1].position.x, poses[0].pose.keypoints[1].position.y);
+    //     stroke(255, 0, 0);
+    //     line(poses[0].pose.keypoints[0].position.x, poses[0].pose.keypoints[0].position.y, poses[0].pose.keypoints[2].position.x, poses[0].pose.keypoints[2].position.y);
+    //     line(poses[0].pose.keypoints[0].position.x, poses[0].pose.keypoints[0].position.y, poses[0].pose.keypoints[3].position.x, poses[0].pose.keypoints[3].position.y);
+    //     line(poses[0].pose.keypoints[0].position.x, poses[0].pose.keypoints[0].position.y, poses[0].pose.keypoints[4].position.x, poses[0].pose.keypoints[4].position.y);
+    //     line(poses[0].pose.keypoints[0].position.x, poses[0].pose.keypoints[0].position.y, poses[0].pose.keypoints[5].position.x, poses[0].pose.keypoints[5].position.y);
+    //     line(poses[0].pose.keypoints[0].position.x, poses[0].pose.keypoints[0].position.y, poses[0].pose.keypoints[6].position.x, poses[0].pose.keypoints[6].position.y);
+    //     line(poses[0].pose.keypoints[1].position.x, poses[0].pose.keypoints[1].position.y, poses[0].pose.keypoints[2].position.x, poses[0].pose.keypoints[2].position.y);
+    //     line(poses[0].pose.keypoints[1].position.x, poses[0].pose.keypoints[1].position.y, poses[0].pose.keypoints[3].position.x, poses[0].pose.keypoints[3].position.y);
+    //     line(poses[0].pose.keypoints[1].position.x, poses[0].pose.keypoints[1].position.y, poses[0].pose.keypoints[4].position.x, poses[0].pose.keypoints[4].position.y);
+    //     line(poses[0].pose.keypoints[1].position.x, poses[0].pose.keypoints[1].position.y, poses[0].pose.keypoints[5].position.x, poses[0].pose.keypoints[5].position.y);
+    //     line(poses[0].pose.keypoints[1].position.x, poses[0].pose.keypoints[1].position.y, poses[0].pose.keypoints[6].position.x, poses[0].pose.keypoints[6].position.y);
+    //     line(poses[0].pose.keypoints[2].position.x, poses[0].pose.keypoints[2].position.y, poses[0].pose.keypoints[3].position.x, poses[0].pose.keypoints[3].position.y);
+    //     line(poses[0].pose.keypoints[2].position.x, poses[0].pose.keypoints[2].position.y, poses[0].pose.keypoints[4].position.x, poses[0].pose.keypoints[4].position.y);
+    //     line(poses[0].pose.keypoints[2].position.x, poses[0].pose.keypoints[2].position.y, poses[0].pose.keypoints[5].position.x, poses[0].pose.keypoints[5].position.y);
+    //     line(poses[0].pose.keypoints[2].position.x, poses[0].pose.keypoints[2].position.y, poses[0].pose.keypoints[6].position.x, poses[0].pose.keypoints[6].position.y);
+    //     line(poses[0].pose.keypoints[3].position.x, poses[0].pose.keypoints[3].position.y, poses[0].pose.keypoints[4].position.x, poses[0].pose.keypoints[4].position.y);
+    //     line(poses[0].pose.keypoints[3].position.x, poses[0].pose.keypoints[3].position.y, poses[0].pose.keypoints[5].position.x, poses[0].pose.keypoints[5].position.y);
+    //     line(poses[0].pose.keypoints[3].position.x, poses[0].pose.keypoints[3].position.y, poses[0].pose.keypoints[6].position.x, poses[0].pose.keypoints[6].position.y);
+    //     line(poses[0].pose.keypoints[4].position.x, poses[0].pose.keypoints[4].position.y, poses[0].pose.keypoints[5].position.x, poses[0].pose.keypoints[5].position.y);
+    //     line(poses[0].pose.keypoints[4].position.x, poses[0].pose.keypoints[4].position.y, poses[0].pose.keypoints[6].position.x, poses[0].pose.keypoints[6].position.y);
+    //     line(poses[0].pose.keypoints[5].position.x, poses[0].pose.keypoints[5].position.y, poses[0].pose.keypoints[6].position.x, poses[0].pose.keypoints[6].position.y);  
+    // }
 }
 
 function ok()
@@ -186,7 +210,6 @@ function save2()
     // 20 = left shoulder to right shoulder
     distance[20] = int(dist(poses[0].pose.keypoints[5].position.x, poses[0].pose.keypoints[5].position.y, poses[0].pose.keypoints[6].position.x, poses[0].pose.keypoints[6].position.y));
     
-
     history.pushState({}, "", "store");
     window.location.href = window.location.href + "?" // + "x0=" + int(poses[0].pose.keypoints[0].position.x) + "&"
                                                     //   + "y0=" + int(poses[0].pose.keypoints[0].position.y) + "&"

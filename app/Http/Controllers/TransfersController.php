@@ -18,6 +18,11 @@ class TransfersController extends Controller
      */
     public function index()
     {
+        if(!auth()->user())
+        {
+            return redirect('')->with("error","You do not have access to that page. Authenticate please.");
+        }
+        
         $user = Auth::user();   
 
         return view('transfers.index', compact('user'));
@@ -96,6 +101,11 @@ class TransfersController extends Controller
      */
     public function nationals()
     {
+        if(!auth()->user())
+        {
+            return redirect('')->with("error","You do not have access to that page. Authenticate please.");
+        }
+        
         $user = Auth::user();        
 
         return view('transfers.nationals', compact('user'));
@@ -109,6 +119,11 @@ class TransfersController extends Controller
      */
     public function storeNationals(User $user)
     {
+        if(!auth()->user())
+        {
+            return redirect('')->with("error","You do not have access to that page. Authenticate please.");
+        }
+        
         $data = request([
             'nib', 'account', 'amount', 'pin', 'pin_confirmation'
         ]);
@@ -157,7 +172,7 @@ class TransfersController extends Controller
         $sender_account->transfers()->attach($transfer->id);
         $sender_account->save();
 
-        return redirect()->back()->with("success","Transfer of ".$transfer->amount."€ to ".$user->name." permorfed successfully !");
+        return redirect()->back()->with("success","Transfer of ".$transfer->amount."€ to ".$receiver_account->user()->first()->name." permorfed successfully !");
     }
 
     /**
@@ -167,6 +182,11 @@ class TransfersController extends Controller
      */
     public function internationals()
     {
+        if(!auth()->user())
+        {
+            return redirect('')->with("error","You do not have access to that page. Authenticate please.");
+        }
+        
         $user = Auth::user();        
 
         return view('transfers.internationals', compact('user'));

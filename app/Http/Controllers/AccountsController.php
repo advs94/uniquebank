@@ -18,6 +18,11 @@ class AccountsController extends Controller
      */
     public function index()
     {
+        if(!auth()->user())
+        {
+            return redirect('')->with("error","You do not have access to that page. Authenticate please.");
+        }
+        
         $user = Auth::user();   
 
         return view('accounts.show', compact('user'));
@@ -30,6 +35,11 @@ class AccountsController extends Controller
      */
     public function create()
     {
+        if(!auth()->user())
+        {
+            return redirect('')->with("error","You do not have access to that page. Authenticate please.");
+        }
+        
         $user = Auth::user();
 
         return view('accounts.create', compact('user'));
@@ -43,6 +53,11 @@ class AccountsController extends Controller
      */
     public function store(User $user)
     {
+        if(!auth()->user())
+        {
+            return redirect('')->with("error","You do not have access to that page. Authenticate please.");
+        }
+        
         $data = request([
             'type', 'pin', 'pin_confirmation'
         ]);
@@ -128,6 +143,21 @@ class AccountsController extends Controller
      */
     public function destroy(Account $account)
     {
+        if(!auth()->user())
+        {
+            return redirect('')->with("error","You do not have access to that page. Authenticate please.");
+        }
+        
+        foreach ($account->transfers as $transfer) 
+        {
+            $sender_account = $transfer->accounts()->wherePivot('account_id', '!=', $account->id)->first();
+
+            $account->transfers()->detach($transfer->id);
+            $sender_account->transfers()->detach($transfer->id);
+
+            $transfer->delete();
+        }
+
         $account->delete();
 
         return back()->with("success","Account deleted successfully !");
@@ -140,6 +170,11 @@ class AccountsController extends Controller
      */
     public function balance()
     {
+        if(!auth()->user())
+        {
+            return redirect('')->with("error","You do not have access to that page. Authenticate please.");
+        }
+        
         $user = Auth::user();
 
         return view('accounts.balance', compact('user'));;
@@ -152,6 +187,11 @@ class AccountsController extends Controller
      */
     public function nibiban()
     {
+        if(!auth()->user())
+        {
+            return redirect('')->with("error","You do not have access to that page. Authenticate please.");
+        }
+        
         $user = Auth::user();
 
         return view('accounts.nibiban', compact('user'));;

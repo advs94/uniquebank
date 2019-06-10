@@ -19,6 +19,11 @@ class UsersController extends Controller
      */
     public function index()
     {
+        if(!auth()->user())
+        {
+            return redirect('')->with("error","You do not have access to that page. Authenticate please.");
+        }
+        
         $users = User::all();
 
         return view('users.index', compact('users'));
@@ -52,6 +57,11 @@ class UsersController extends Controller
      */
     public function show()
     {
+        if(!auth()->user())
+        {
+            return redirect('')->with("error","You do not have access to that page. Authenticate please.");
+        }
+        
         $user = Auth::user();
 
         return view('profile', compact('user'));
@@ -65,6 +75,11 @@ class UsersController extends Controller
      */
     public function edit()
     {
+        if(!auth()->user())
+        {
+            return redirect('')->with("error","You do not have access to that page. Authenticate please.");
+        }
+        
         $user = Auth::user();
 
         return view('users.profile', compact('user'));
@@ -78,6 +93,11 @@ class UsersController extends Controller
      */
     public function update(User $user)
     {
+        if(!auth()->user())
+        {
+            return redirect('')->with("error","You do not have access to that page. Authenticate please.");
+        }
+        
         $date = Carbon::now()->subYears(18)->format('d/m/Y');
 
         $data = request([
@@ -120,6 +140,11 @@ class UsersController extends Controller
      */
     public function destroy(User $user)
     {
+        if(!auth()->user())
+        {
+            return redirect('')->with("error","You do not have access to that page. Authenticate please.");
+        }
+        
         // falta implementar o parametro is_deleted ou is_active
         // na configuração dos atributos de account
         // consequentemente falta implementar a funcionalidade
@@ -142,7 +167,7 @@ class UsersController extends Controller
 
         $user->delete();
 
-        return redirect('/login?userEmail=@');
+        return redirect('')->with("success","Account deleted successfully !");
     }
 
     /**
@@ -152,6 +177,11 @@ class UsersController extends Controller
      */
     public function editPassword()
     {
+        if(!auth()->user())
+        {
+            return redirect('')->with("error","You do not have access to that page. Authenticate please.");
+        }
+        
         $user = Auth::user();
 
         return view('users.password', compact('user'));
@@ -165,6 +195,11 @@ class UsersController extends Controller
      */
     public function updatePassword(User $user)
     {
+        if(!auth()->user())
+        {
+            return redirect('')->with("error","You do not have access to that page. Authenticate please.");
+        }
+        
         $data = request([
             'current_password', 'new_password', 'new_password_confirmation'
         ]);
