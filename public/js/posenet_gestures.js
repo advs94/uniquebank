@@ -86,8 +86,8 @@ function draw()
     textSize(16);
     text(label, 10, height - 15);
 
-    drawKeypoints();
-    drawSkeleton();
+    // drawKeypoints();
+    // drawSkeleton();
 }
 
 // function ok()
@@ -137,7 +137,7 @@ function gotPoses()
 
         if(left == 66)
         {
-            label = 'Raise your right hand and close it for 3 seconds';
+            label = 'Raise your right hand for 3 seconds';
         }
     }
     else if(poses[0].pose.keypoints[9].position.y > 470 && left < 66)

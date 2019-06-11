@@ -172,7 +172,7 @@ function gotPoses()
 
     for (i = 0; i < distance.length; i++)
     {
-        if(distance[i] <= (lifedetection[i] * 0.8) || distance[i] >= lifedetection[i] * 1.2)
+        if(distance[i] <= (lifedetection[i] * 0.85) || distance[i] >= lifedetection[i] * 1.15)
         {
             // console.log(distance[i]);
             // console.log(lifedetection[i] * 0.9);

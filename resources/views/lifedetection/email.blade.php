@@ -12,6 +12,17 @@
 
     <div class="login-box">
         
+        @if (session('error'))
+            <div class="alert alert-danger">
+                {{ session('error') }}
+            </div>
+        @endif
+        @if (session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
+
         <?php
             if(strcmp(substr(url()->full(), strpos(url()->full(), '?')+1, strlen('noPoses')), 'noPoses') == 0)
             {

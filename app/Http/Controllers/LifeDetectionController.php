@@ -71,6 +71,11 @@ class LifeDetectionController extends Controller
 
         $user = User::whereEmail($email)->first();
 
+        if(!$user)
+        {
+            return redirect('/email')->with("error", "There is no account associated with this email !");
+        }
+
         if(!is_null($user->life_detection))
         {
             return view('lifedetection.show', compact('user'));
