@@ -1,6 +1,6 @@
 <?php
 
-namespace UniqueBank\Http\Middleware;
+namespace lifedetection\Http\Middleware;
 
 use Illuminate\Auth\Middleware\Authenticate as Middleware;
 

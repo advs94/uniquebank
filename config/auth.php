@@ -67,7 +67,7 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => UniqueBank\User::class,
+            'model' => lifedetection\User::class,
         ],
 
         // 'users' => [

@@ -1,6 +1,6 @@
 <?php
 
-namespace UniqueBank\Http\Middleware;
+namespace lifedetection\Http\Middleware;
 
 use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken as Middleware;
 

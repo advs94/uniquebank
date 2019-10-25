@@ -1,8 +1,8 @@
 <?php
 
-namespace UniqueBank\Http\Controllers;
+namespace lifedetection\Http\Controllers;
 
-use UniqueBank\User;
+use lifedetection\User;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Validator;
@@ -88,7 +88,7 @@ class UsersController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \UniqueBank\User  $user
+     * @param  \lifedetection\User  $user
      * @return \Illuminate\Http\Response
      */
     public function update(User $user)
@@ -135,7 +135,7 @@ class UsersController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \UniqueBank\User  $user
+     * @param  \lifedetection\User  $user
      * @return \Illuminate\Http\Response
      */
     public function destroy(User $user)
@@ -190,7 +190,7 @@ class UsersController extends Controller
     /**
      * Update the password of the specified resource in storage.
      *
-     * @param  \UniqueBank\User  $user
+     * @param  \lifedetection\User  $user
      * @return \Illuminate\Http\Response
      */
     public function updatePassword(User $user)

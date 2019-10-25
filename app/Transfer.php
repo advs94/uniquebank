@@ -1,6 +1,6 @@
 <?php
 
-namespace UniqueBank;
+namespace lifedetection;
 
 use Illuminate\Database\Eloquent\Model;
 

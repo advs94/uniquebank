@@ -2,7 +2,7 @@
 
 use Faker\Generator as Faker;
 
-$factory->define(UniqueBank\Account::class, function (Faker $faker) {
+$factory->define(lifedetection\Account::class, function (Faker $faker) {
     return [
         //
     ];

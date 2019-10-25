@@ -28,17 +28,17 @@ $app = new Illuminate\Foundation\Application(
 
 $app->singleton(
     Illuminate\Contracts\Http\Kernel::class,
-    UniqueBank\Http\Kernel::class
+    lifedetection\Http\Kernel::class
 );
 
 $app->singleton(
     Illuminate\Contracts\Console\Kernel::class,
-    UniqueBank\Console\Kernel::class
+    lifedetection\Console\Kernel::class
 );
 
 $app->singleton(
     Illuminate\Contracts\Debug\ExceptionHandler::class,
-    UniqueBank\Exceptions\Handler::class
+    lifedetection\Exceptions\Handler::class
 );
 
 /*

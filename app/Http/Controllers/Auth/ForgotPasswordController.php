@@ -1,8 +1,8 @@
 <?php
 
-namespace UniqueBank\Http\Controllers\Auth;
+namespace lifedetection\Http\Controllers\Auth;
 
-use UniqueBank\Http\Controllers\Controller;
+use lifedetection\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\SendsPasswordResetEmails;
 
 class ForgotPasswordController extends Controller

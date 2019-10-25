@@ -1,6 +1,6 @@
 <?php
 
-namespace UniqueBank\Providers;
+namespace lifedetection\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Broadcast;

@@ -1,6 +1,6 @@
 <?php
 
-namespace UniqueBank\Exceptions;
+namespace lifedetection\Exceptions;
 
 use Exception;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;

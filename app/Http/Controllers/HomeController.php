@@ -1,6 +1,6 @@
 <?php
 
-namespace UniqueBank\Http\Controllers;
+namespace lifedetection\Http\Controllers;
 
 use Illuminate\Http\Request;
 

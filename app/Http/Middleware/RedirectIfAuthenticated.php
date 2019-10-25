@@ -1,6 +1,6 @@
 <?php
 
-namespace UniqueBank\Http\Middleware;
+namespace lifedetection\Http\Middleware;
 
 use Closure;
 use Illuminate\Support\Facades\Auth;
