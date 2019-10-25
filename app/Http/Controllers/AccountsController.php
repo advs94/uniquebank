@@ -1,11 +1,11 @@
 <?php
 
-namespace lifedetection\Http\Controllers;
+namespace uniquebank\Http\Controllers;
 
-use lifedetection\Account;
+use uniquebank\Account;
 use Illuminate\Http\Request;
 use Auth;
-use lifedetection\User;
+use uniquebank\User;
 use Validator;
 use DB;
 
@@ -104,7 +104,7 @@ class AccountsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \lifedetection\Account  $account
+     * @param  \uniquebank\Account  $account
      * @return \Illuminate\Http\Response
      */
     public function show(Account $account)
@@ -115,7 +115,7 @@ class AccountsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \lifedetection\Account  $account
+     * @param  \uniquebank\Account  $account
      * @return \Illuminate\Http\Response
      */
     public function edit(Account $account)
@@ -127,7 +127,7 @@ class AccountsController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \lifedetection\Account  $account
+     * @param  \uniquebank\Account  $account
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Account $account)
@@ -138,7 +138,7 @@ class AccountsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \lifedetection\Account  $account
+     * @param  \uniquebank\Account  $account
      * @return \Illuminate\Http\Response
      */
     public function destroy(Account $account)

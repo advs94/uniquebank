@@ -31,7 +31,7 @@ return [
     ],
 
     'stripe' => [
-        'model' => lifedetection\User::class,
+        'model' => uniquebank\User::class,
         'key' => env('STRIPE_KEY'),
         'secret' => env('STRIPE_SECRET'),
         'webhook' => [

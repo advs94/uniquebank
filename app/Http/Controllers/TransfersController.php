@@ -1,10 +1,10 @@
 <?php
 
-namespace lifedetection\Http\Controllers;
+namespace uniquebank\Http\Controllers;
 
-use lifedetection\Transfer;
-use lifedetection\Account;
-use lifedetection\User;
+use uniquebank\Transfer;
+use uniquebank\Account;
+use uniquebank\User;
 use Illuminate\Http\Request;
 use Auth;
 use Validator;
@@ -52,7 +52,7 @@ class TransfersController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \lifedetection\Transfer  $transfer
+     * @param  \uniquebank\Transfer  $transfer
      * @return \Illuminate\Http\Response
      */
     public function show(Transfer $transfer)
@@ -63,7 +63,7 @@ class TransfersController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \lifedetection\Transfer  $transfer
+     * @param  \uniquebank\Transfer  $transfer
      * @return \Illuminate\Http\Response
      */
     public function edit(Transfer $transfer)
@@ -75,7 +75,7 @@ class TransfersController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \lifedetection\Transfer  $transfer
+     * @param  \uniquebank\Transfer  $transfer
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Transfer $transfer)
@@ -86,7 +86,7 @@ class TransfersController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \lifedetection\Transfer  $transfer
+     * @param  \uniquebank\Transfer  $transfer
      * @return \Illuminate\Http\Response
      */
     public function destroy(Transfer $transfer)
@@ -114,7 +114,7 @@ class TransfersController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \lifedetection\User  $user
+     * @param  \uniquebank\User  $user
      * @return \Illuminate\Http\Response
      */
     public function storeNationals(User $user)
@@ -195,7 +195,7 @@ class TransfersController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \lifedetection\User  $user
+     * @param  \uniquebank\User  $user
      * @return \Illuminate\Http\Response
      */
     public function storeInternationals(User $user)

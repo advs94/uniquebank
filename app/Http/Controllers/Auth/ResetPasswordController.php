@@ -1,8 +1,8 @@
 <?php
 
-namespace lifedetection\Http\Controllers\Auth;
+namespace uniquebank\Http\Controllers\Auth;
 
-use lifedetection\Http\Controllers\Controller;
+use uniquebank\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ResetsPasswords;
 
 class ResetPasswordController extends Controller

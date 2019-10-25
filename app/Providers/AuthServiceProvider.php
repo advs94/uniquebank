@@ -1,6 +1,6 @@
 <?php
 
-namespace lifedetection\Providers;
+namespace uniquebank\Providers;
 
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
@@ -13,7 +13,7 @@ class AuthServiceProvider extends ServiceProvider
      * @var array
      */
     protected $policies = [
-        'lifedetection\Model' => 'lifedetection\Policies\ModelPolicy',
+        'uniquebank\Model' => 'uniquebank\Policies\ModelPolicy',
     ];
 
     /**

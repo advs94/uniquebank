@@ -1,6 +1,6 @@
 <?php
 
-namespace lifedetection\Providers;
+namespace uniquebank\Providers;
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
@@ -14,7 +14,7 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @var string
      */
-    protected $namespace = 'lifedetection\Http\Controllers';
+    protected $namespace = 'uniquebank\Http\Controllers';
 
     /**
      * Define your route model bindings, pattern filters, etc.

@@ -1,6 +1,6 @@
 <?php
 
-namespace lifedetection\Http\Middleware;
+namespace uniquebank\Http\Middleware;
 
 use Illuminate\Foundation\Http\Middleware\CheckForMaintenanceMode as Middleware;
 

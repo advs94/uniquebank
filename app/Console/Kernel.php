@@ -1,6 +1,6 @@
 <?php
 
-namespace lifedetection\Console;
+namespace uniquebank\Console;
 
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;

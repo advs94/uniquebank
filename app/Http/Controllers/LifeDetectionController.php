@@ -1,10 +1,10 @@
 <?php
 
-namespace lifedetection\Http\Controllers;
+namespace uniquebank\Http\Controllers;
 
 use Illuminate\Http\Request;
 use File;
-use lifedetection\User;
+use uniquebank\User;
 
 class LifeDetectionController extends Controller
 {
@@ -105,7 +105,7 @@ class LifeDetectionController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \lifedetection\User  $user
+     * @param  \uniquebank\User  $user
      * @return \Illuminate\Http\Response
      */
     public function update(User $user)
@@ -116,7 +116,7 @@ class LifeDetectionController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \lifedetection\User  $user
+     * @param  \uniquebank\User  $user
      * @return \Illuminate\Http\Response
      */
     public function destroy()

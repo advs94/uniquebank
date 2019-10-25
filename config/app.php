@@ -170,11 +170,11 @@ return [
         /*
          * Application Service Providers...
          */
-        lifedetection\Providers\AppServiceProvider::class,
-        lifedetection\Providers\AuthServiceProvider::class,
-        // lifedetection\Providers\BroadcastServiceProvider::class,
-        lifedetection\Providers\EventServiceProvider::class,
-        lifedetection\Providers\RouteServiceProvider::class,
+        uniquebank\Providers\AppServiceProvider::class,
+        uniquebank\Providers\AuthServiceProvider::class,
+        // uniquebank\Providers\BroadcastServiceProvider::class,
+        uniquebank\Providers\EventServiceProvider::class,
+        uniquebank\Providers\RouteServiceProvider::class,
 
     ],
 
